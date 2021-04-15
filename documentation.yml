@@ -24,11 +24,11 @@ paths:
                     schema:
                         $ref: '#/components/schemas/Version'
                 default:
-                description: Unexpected error
-                content:
-                    application/json:
-                    schema:
-                        $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+                    content:
+                        application/json:
+                        schema:
+                            $ref: '#/components/schemas/Error'
 components:
     schemas:
         Version:
