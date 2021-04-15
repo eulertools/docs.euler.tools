@@ -3,7 +3,12 @@ info:
   version: 0.0.1
   title: BSC
 servers:
-  - url: 'http://localhost:3000'
+- url: https://api.dev.euler.tools/
+  description: Development server
+- url: https://api.beta.euler.tools/
+  description: Beta server
+- url: https://api.euler.tools/
+  description: Production server
 paths:
     /bsc/version:
         get:
