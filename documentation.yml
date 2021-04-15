@@ -31,18 +31,15 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    User:
+    Version:
       type: object
       required:
-        - id
+        - version
         - name
       properties:
-        id:
-          type: integer
-          format: int64
-        name:
+        version:
           type: string
-        tag:
+        name:
           type: string
     Error:
       type: object
