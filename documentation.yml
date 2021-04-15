@@ -55,3 +55,6 @@ components:
                     format: int32
                 message:
                     type: string
+            example: 
+                code: 123
+                name: "This request can't be fulfilled"
