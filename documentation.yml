@@ -7,7 +7,7 @@ servers:
 paths:
     /bsc/version:
         get:
-            summary: 'Sample endpoint: Returns details about the API Version'
+            summary: 'Version endpoint: Returns details about the API Version'
             operationId: getVersion
             tags:
                 - version
