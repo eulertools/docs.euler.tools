@@ -5,26 +5,18 @@ info:
 servers:
   - url: 'http://localhost:3000'
 paths:
-  /bsc:
+  /bsc/version:
     get:
-    summary: 'Sample endpoint: Returns details about a particular user'
-    operationId: listUser
+    summary: 'Sample endpoint: Returns details about the API Version'
+    operationId: getVersion
     tags:
-        - user
-    parameters:
-        - name: id
-        in: query
-        description: ID of the user
-        required: true
-        schema:
-            type: integer
-            format: int32
+        - version
     responses:
         '200':
-        description: 'Sample response: Details about a user by ID'
+        description: 'Sample response: Details about the API Version'
         headers:
-            x-next:
-            description: A link to the next page of responses
+            x-version:
+            description: Version of the API as header for cache and validation
             schema:
                 type: string
         content:
