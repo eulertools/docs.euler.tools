@@ -1,716 +1,806 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.1",
   "info": {
+    "title": "eulerApidevelopment",
     "description": "Euler Api | Env: development",
-    "version": "2021-04-15T13:58:39Z",
-    "title": "eulerApidevelopment"
+    "version": "2021-04-15T14:11:59Z"
   },
-  "host": "api.dev.euler.tools",
-  "basePath": "/bsc",
-  "schemes": [
-    "https"
+  "servers": [
+    {
+      "url": "https://api.dev.euler.tools/{basePath}",
+      "variables": {
+        "basePath": {
+          "default": "/bsc"
+        }
+      }
+    }
   ],
   "paths": {
-    "/": {
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/athena": {
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/athena/blocks": {
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/athena/blocks/count": {
+    "/version": {
       "get": {
-        "responses": {}
+        "security": [
+          {
+            "PipelineeulerdevelopmenteulerDeployStagedevelopmentApiauth8E94F44D": []
+          },
+            "responses": {
+          "204": {
+            "description": "204 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        }
+        ]
       },
       "options": {
-        "consumes": [
-          "application/json"
-        ],
         "responses": {
           "204": {
             "description": "204 response",
             "headers": {
               "Access-Control-Allow-Origin": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Methods": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Headers": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               }
-            }
-          }
-        }
-      }
-    },
-    "/athena/blocks/count/sum": {
-      "get": {
-        "responses": {}
-      },
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/athena/token-transfers": {
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/athena/token-transfers/count": {
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/athena/token-transfers/count/distinct": {
-      "get": {
-        "responses": {}
-      },
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/athena/token-transfers/first": {
-      "get": {
-        "responses": {}
-      },
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/athena/tokens": {
-      "get": {
-        "responses": {}
-      },
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/athena/tokens/list": {
-      "get": {
-        "responses": {}
-      },
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/athena/transactions": {
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/athena/transactions/count": {
-      "get": {
-        "responses": {}
-      },
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
+            },
+            "content": {}
           }
         }
       }
     },
     "/bitquery-integration": {
       "options": {
-        "consumes": [
-          "application/json"
-        ],
         "responses": {
           "204": {
             "description": "204 response",
             "headers": {
               "Access-Control-Allow-Origin": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Methods": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Headers": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               }
-            }
+            },
+            "content": {}
           }
         }
       }
     },
-    "/bitquery-integration/symbols-list": {
-      "post": {
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "symbolListSchema",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/symbolListSchema"
-            }
-          }
-        ],
-        "responses": {}
-      },
+    "/athena/token-transfers": {
       "options": {
-        "consumes": [
-          "application/json"
-        ],
         "responses": {
           "204": {
             "description": "204 response",
             "headers": {
               "Access-Control-Allow-Origin": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Methods": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Headers": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               }
-            }
+            },
+            "content": {}
           }
         }
       }
     },
-    "/bitquery-integration/trades": {
-      "post": {
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "candleDataSchema",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/candleDataSchema"
-            }
-          }
-        ],
-        "responses": {}
-      },
+    "/athena/tokens": {
+      "get": {},
       "options": {
-        "consumes": [
-          "application/json"
-        ],
         "responses": {
           "204": {
             "description": "204 response",
             "headers": {
               "Access-Control-Allow-Origin": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Methods": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Headers": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               }
-            }
+            },
+            "content": {}
           }
         }
       }
     },
-    "/portfolios": {
-      "get": {
-        "responses": {}
-      },
+    "/athena": {
       "options": {
-        "consumes": [
-          "application/json"
-        ],
         "responses": {
           "204": {
             "description": "204 response",
             "headers": {
               "Access-Control-Allow-Origin": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Methods": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Headers": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               }
-            }
-          }
-        }
-      }
-    },
-    "/portfolios/{portfolio_id}": {
-      "get": {
-        "responses": {}
-      },
-      "post": {
-        "responses": {}
-      },
-      "put": {
-        "responses": {}
-      },
-      "delete": {
-        "responses": {}
-      },
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
+            },
+            "content": {}
           }
         }
       }
     },
     "/portfolios/{portfolio_id}/{item_id}": {
       "post": {
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "portfolioItemModel",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/portfolioItemModel"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/portfolioItemModel"
+              }
             }
-          }
-        ],
-        "responses": {}
+          },
+          "required": true
+        }
       },
-      "delete": {
-        "responses": {}
-      },
+      "delete": {},
       "options": {
-        "consumes": [
-          "application/json"
-        ],
         "responses": {
           "204": {
             "description": "204 response",
             "headers": {
               "Access-Control-Allow-Origin": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Methods": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Headers": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               }
-            }
+            },
+            "content": {}
           }
         }
       }
     },
-    "/symbols-pairs": {
-      "get": {
-        "responses": {}
-      },
+    "/athena/token-transfers/first": {
+      "get": {},
       "options": {
-        "consumes": [
-          "application/json"
-        ],
         "responses": {
           "204": {
             "description": "204 response",
             "headers": {
               "Access-Control-Allow-Origin": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Methods": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Headers": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               }
-            }
+            },
+            "content": {}
           }
         }
       }
     },
     "/tokenTransfers": {
+      "post": {},
+      "options": {
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        }
+      }
+    },
+    "/": {
+      "options": {
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        }
+      }
+    },
+    "/portfolios/{portfolio_id}": {
+      "get": {},
+      "put": {},
       "post": {
-        "responses": {}
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/portfolioItemModel"
+              }
+            }
+          },
+          "required": true
+        }
       },
+      "delete": {},
       "options": {
-        "consumes": [
-          "application/json"
-        ],
         "responses": {
           "204": {
             "description": "204 response",
             "headers": {
               "Access-Control-Allow-Origin": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Methods": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Headers": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               }
-            }
+            },
+            "content": {}
           }
         }
       }
     },
-    "/version": {
-      "get": {
-        "responses": {},
-        "security": [
-          {
-            "PipelineeulerdevelopmenteulerDeployStagedevelopmentApiauth8E94F44D": []
-          }
-        ]
-      },
+    "/athena/tokens/list": {
+      "get": {},
       "options": {
-        "consumes": [
-          "application/json"
-        ],
         "responses": {
           "204": {
             "description": "204 response",
             "headers": {
               "Access-Control-Allow-Origin": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Methods": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Headers": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        }
+      }
+    },
+    "/athena/transactions/count": {
+      "get": {},
+      "options": {
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        }
+      }
+    },
+    "/athena/blocks/count/sum": {
+      "get": {},
+      "options": {
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        }
+      }
+    },
+    "/athena/transactions": {
+      "options": {
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        }
+      }
+    },
+    "/bitquery-integration/trades": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/candleDataSchema"
               }
             }
+          },
+          "required": true
+        }
+      },
+      "options": {
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        }
+      }
+    },
+    "/athena/token-transfers/count": {
+      "options": {
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        }
+      }
+    },
+    "/portfolios": {
+      "get": {},
+      "post": {},
+      "options": {
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        }
+      }
+    },
+    "/symbols-pairs": {
+      "get": {},
+      "options": {
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        }
+      }
+    },
+    "/athena/token-transfers/count/distinct": {
+      "get": {},
+      "options": {
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        }
+      }
+    },
+    "/athena/blocks/count": {
+      "get": {},
+      "options": {
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        }
+      }
+    },
+    "/athena/blocks": {
+      "options": {
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        }
+      }
+    },
+    "/bitquery-integration/symbols-list": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/symbolListSchema"
+              }
+            }
+          },
+          "required": true
+        }
+      },
+      "options": {
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
           }
         }
       }
     }
   },
-  "securityDefinitions": {
-    "PipelineeulerdevelopmenteulerDeployStagedevelopmentApiauth8E94F44D": {
-      "type": "apiKey",
-      "name": "Authorization",
-      "in": "header",
-      "x-amazon-apigateway-authtype": "custom"
-    }
-  },
-  "definitions": {
-    "symbolListSchema": {
-      "type": "object",
-      "properties": {
-        "smartContractEvent": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 100
+  "components": {
+    "schemas": {
+      "symbolListSchema": {
+        "type": "object",
+        "properties": {
+          "smartContractEvent": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "argument": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          },
+          "smartContractAddress": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "desc": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          }
         },
-        "argument": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 100
+        "additionalProperties": false
+      },
+      "candleDataSchema": {
+        "type": "object",
+        "properties": {
+          "quoteCurrency": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "till": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "window": {
+            "type": "integer"
+          },
+          "baseCurrency": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "since": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          }
         },
-        "limit": {
-          "type": "integer"
+        "additionalProperties": false
+      },
+      "portfolioItemModel": {
+        "required": [
+          "identifier",
+          "name",
+          "order",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "order": {
+            "type": "integer"
+          }
         },
-        "smartContractAddress": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 100
-        },
-        "desc": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 100
-        }
+        "additionalProperties": false
       }
     },
-    "candleDataSchema": {
-      "type": "object",
-      "properties": {
-        "quoteCurrency": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 100
-        },
-        "till": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 100
-        },
-        "window": {
-          "type": "integer"
-        },
-        "baseCurrency": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 100
-        },
-        "since": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 100
-        }
-      }
-    },
-    "portfolioItemModel": {
-      "type": "object",
-      "required": [
-        "identifier",
-        "name",
-        "order",
-        "type"
-      ],
-      "properties": {
-        "identifier": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 50
-        },
-        "name": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 50
-        },
-        "type": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 50
-        },
-        "order": {
-          "type": "integer"
-        }
+    "securitySchemes": {
+      "PipelineeulerdevelopmenteulerDeployStagedevelopmentApiauth8E94F44D": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header",
+        "x-amazon-apigateway-authtype": "custom"
       }
     }
   }
