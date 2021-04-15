@@ -32,23 +32,23 @@ paths:
 components:
     schemas:
         Version:
-        type: object
-        required:
-            - version
-            - name
-        properties:
-            version:
-                type: string
-            name:
-                type: string
-        Error:
             type: object
             required:
-                - code
-                - message
+                - version
+                - name
             properties:
-                code:
-                    type: integer
-                    format: int32
-                message:
+                version:
                     type: string
+                name:
+                    type: string
+            Error:
+                type: object
+                required:
+                    - code
+                    - message
+                properties:
+                    code:
+                        type: integer
+                        format: int32
+                    message:
+                        type: string
