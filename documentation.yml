@@ -21,8 +21,8 @@ paths:
                                 type: string
                     content:
                         application/json:
-                        schema:
-                            $ref: '#/components/schemas/Version'
+                            schema:
+                                $ref: '#/components/schemas/Version'
                 default:
                     description: Unexpected error
                     content:
