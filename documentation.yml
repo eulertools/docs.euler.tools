@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: BSC
+servers:
+  - url: 'http://localhost:3000'
+paths:
+    /bsc/version:
+        get:
+        summary: 'Sample endpoint: Returns details about the API Version'
+        operationId: getVersion
+        tags:
+            - version
+        responses:
+            '200':
+            description: 'Sample response: Details about the API Version'
+            headers:
+                x-version:
+                description: Version of the API as header for cache and validation
+                schema:
+                    type: string
+            content:
+                application/json:
+                schema:
+                    $ref: '#/components/schemas/Version'
+            default:
+            description: Unexpected error
+            content:
+                application/json:
+                schema:
+                    $ref: '#/components/schemas/Error'
+components:
+    schemas:
+        Version:
+        type: object
+        required:
+            - version
+            - name
+        properties:
+            version:
+            type: string
+            name:
+            type: string
+        Error:
+        type: object
+        required:
+            - code
+            - message
+        properties:
+            code:
+            type: integer
+            format: int32
+            message:
+            type: string
