@@ -38,17 +38,17 @@ components:
             - name
         properties:
             version:
-            type: string
+                type: string
             name:
-            type: string
+                type: string
         Error:
-        type: object
-        required:
-            - code
-            - message
-        properties:
-            code:
-            type: integer
-            format: int32
-            message:
-            type: string
+            type: object
+            required:
+                - code
+                - message
+            properties:
+                code:
+                    type: integer
+                    format: int32
+                message:
+                    type: string
