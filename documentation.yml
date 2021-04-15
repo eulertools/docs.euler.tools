@@ -13,22 +13,22 @@ paths:
                 - version
             responses:
                 '200':
-                description: "Sample response: Details about the API Version"
-                headers:
-                    x-version:
-                    description: Version of the API as header for cache and validation
-                    schema:
-                        type: string
-                content:
-                    application/json:
-                    schema:
-                        $ref: '#/components/schemas/Version'
-                default:
-                    description: Unexpected error
+                    description: "Sample response: Details about the API Version"
+                    headers:
+                        x-version:
+                        description: Version of the API as header for cache and validation
+                        schema:
+                            type: string
                     content:
                         application/json:
                         schema:
-                            $ref: '#/components/schemas/Error'
+                            $ref: '#/components/schemas/Version'
+                    default:
+                        description: Unexpected error
+                        content:
+                            application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
 components:
     schemas:
         Version:
