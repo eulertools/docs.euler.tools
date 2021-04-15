@@ -7,28 +7,28 @@ servers:
 paths:
     /bsc/version:
         get:
-        summary: 'Sample endpoint: Returns details about the API Version'
-        operationId: getVersion
-        tags:
-            - version
-        responses:
-            '200':
-            description: 'Sample response: Details about the API Version'
-            headers:
-                x-version:
-                description: Version of the API as header for cache and validation
-                schema:
-                    type: string
-            content:
-                application/json:
-                schema:
-                    $ref: '#/components/schemas/Version'
-            default:
-            description: Unexpected error
-            content:
-                application/json:
-                schema:
-                    $ref: '#/components/schemas/Error'
+            summary: 'Sample endpoint: Returns details about the API Version'
+            operationId: getVersion
+            tags:
+                - version
+            responses:
+                '200':
+                description: 'Sample response: Details about the API Version'
+                headers:
+                    x-version:
+                    description: Version of the API as header for cache and validation
+                    schema:
+                        type: string
+                content:
+                    application/json:
+                    schema:
+                        $ref: '#/components/schemas/Version'
+                default:
+                description: Unexpected error
+                content:
+                    application/json:
+                    schema:
+                        $ref: '#/components/schemas/Error'
 components:
     schemas:
         Version:
