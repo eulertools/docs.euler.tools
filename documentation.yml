@@ -16,9 +16,9 @@ paths:
                     description: "Sample response: Details about the API Version"
                     headers:
                         x-version:
-                        description: Version of the API as header for cache and validation
-                        schema:
-                            type: string
+                            description: Version of the API as header for cache and validation
+                            schema:
+                                type: string
                     content:
                         application/json:
                         schema:
