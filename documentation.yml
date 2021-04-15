@@ -41,7 +41,9 @@ components:
                     type: string
                 name:
                     type: string
-                example: "0.0.1"
+            example: 
+                version: "0.0.1"
+                name: "beta"
         Error:
             type: object
             required:
