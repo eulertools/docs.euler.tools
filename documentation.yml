@@ -27,8 +27,8 @@ paths:
                     description: Unexpected error
                     content:
                         application/json:
-                        schema:
-                            $ref: '#/components/schemas/Error'
+                            schema:
+                                $ref: '#/components/schemas/Error'
 components:
     schemas:
         Version:
