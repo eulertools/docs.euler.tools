@@ -22,7 +22,7 @@
           {
             "PipelineeulerdevelopmenteulerDeployStagedevelopmentApiauth8E94F44D": []
           }
-          ],
+        ],
         "responses": {
           "204": {
             "description": "204 response",
