@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  version: 0.0.1
+  version: 0.1.0
   title: BSC
 servers:
 - url: https://api.dev.euler.tools/
