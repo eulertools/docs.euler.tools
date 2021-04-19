@@ -80,7 +80,7 @@ components:
                 - address
                 - updated
                 - amount
-                - amountUsd 
+                - amountUsd
             properties:
                 address:
                     type: string
