@@ -44,6 +44,21 @@ paths:
             responses:
                 '200':
                     description: "Return the balance for a wallet, listing all tokens with their respective quantity"
+                    headers: 
+                        x-version:
+                            description: Version of the API as header for cache and validation
+                            schema:
+                                type: string
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Balance'
+                default:
+                    description: Not found
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/component/schemas/NotFound'
 components:
     schemas:
         Version:
@@ -73,3 +88,18 @@ components:
             example: 
                 code: 500
                 name: "Unexpected internal error" 
+        NotFound:
+            type: object
+            required:
+                - code
+                - message
+                - entity
+            properties:
+                code:
+                    type: integer
+                    format: int32
+                message:
+                    type: string
+            example:
+                code: 404
+                name: "Entity not found"
