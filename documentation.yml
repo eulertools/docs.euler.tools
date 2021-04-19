@@ -79,6 +79,8 @@ components:
             required:
                 - address
                 - updated
+                - amount
+                - amountUsd 
             properties:
                 address:
                     type: string
