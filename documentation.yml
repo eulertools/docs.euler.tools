@@ -3,142 +3,142 @@ info:
   version: 0.1.0
   title: BSC
 servers:
-- url: https://api.dev.euler.tools/
-  description: Development server
-- url: https://api.beta.euler.tools/
-  description: Beta server
-- url: https://api.euler.tools/
-  description: Production server
+  - url: https://api.dev.euler.tools/
+    description: Development server
+  - url: https://api.beta.euler.tools/
+    description: Beta server
+  - url: https://api.euler.tools/
+    description: Production server
 paths:
-    /bsc/version:
-        get:
-            summary: 'Version endpoint: Returns details about the API Version'
-            operationId: getVersion
-            tags:
-                - version
-            responses:
-                '200':
-                    description: "Details about the API Version"
-                    headers:
-                        x-version:
-                            description: Version of the API as header for cache and validation
-                            schema:
-                                type: string
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Version'
-                default:
-                    description: Unexpected error
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Error'
-    /bsc/account:
-        get:
-            summary: 'Get Balance for an specific address'
-            operationId: getBalance
-            tags:
-                - Balance
-                - Account
-            responses:
-                '200':
-                    description: "Return the balance for a wallet, listing all tokens with their respective quantity"
-                    headers: 
-                        x-version:
-                            description: Version of the API as header for cache and validation
-                            schema:
-                                type: string
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Balance'
-                default:
-                    description: Not found
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/component/schemas/NotFound'
+  /bsc/version:
+    get:
+      summary: "Version endpoint: Returns details about the API Version"
+      operationId: getVersion
+      tags:
+        - version
+      responses:
+        "200":
+          description: "Details about the API Version"
+          headers:
+            x-version:
+              description: Version of the API as header for cache and validation
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Version"
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /bsc/account:
+    get:
+      summary: "Get Balance for an specific address"
+      operationId: getBalance
+      tags:
+        - Balance
+        - Account
+      responses:
+        "200":
+          description: "Return the balance for a wallet, listing all tokens with their respective quantity"
+          headers:
+            x-version:
+              description: Version of the API as header for cache and validation
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Balance"
+        default:
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/component/schemas/NotFound"
 components:
-    schemas:
-        Version:
+  schemas:
+    Version:
+      type: object
+      required:
+        - version
+        - name
+      properties:
+        version:
+          type: string
+        name:
+          type: string
+      example:
+        version: "0.0.1"
+        name: "beta"
+    Balance:
+      type: object
+      required:
+        - address
+        - updated
+        - amount
+        - amountUsd
+      properties:
+        code:
+          type: integer
+        address:
+          type: string
+        updated:
+          type: string
+        balance:
+          type: array
+          items:
             type: object
-            required:
-                - version
-                - name
             properties:
-                version:
-                    type: string
-                name:
-                    type: string
-            example: 
-                version: "0.0.1"
-                name: "beta"
-        Balance:
-            type: object
-            required:
-                - address
-                - updated
-                - amount
-                - amountUsd 
-            properties:
-                code: 
-                    type: integer
-                address:
-                    type: string
-                updated:
-                    type: string
-                balance:
-                    type: array
-                    items:
-                        type: object
-                        properties:
-                            symbol: 
-                                type: string
-                            address: 
-                                type: string
-                            amount: 
-                                type: number
-                                format: float
-                            amountUsd: 
-                                type: number
-                                format: float
-                        example:
-                            - symbol: "euler"
-                              address: "0x3920123482070c1a2dff73aad695c60e7c6f6862"
-                              amount: 100.00
-                              amountUsd: 100.00
+              symbol:
+                type: string
+              address:
+                type: string
+              amount:
+                type: number
+                format: float
+              amountUsd:
+                type: number
+                format: float
             example:
-                code: 200
-                address: "0x0xf037F020771BF024a4Ea3b7329cf09519d4f7964"
-                updated: "2012-04-23T18:25:43.511Z"
-        Error:
-            type: object
-            required:
-                - code
-                - message
-            properties:
-                code:
-                    type: integer
-                    format: int32
-                message:
-                    type: string
-            example: 
-                code: 500
-                name: "Unexpected internal error" 
-        NotFound:
-            type: object
-            required:
-                - code
-                - message
-                - entity
-            properties:
-                code:
-                    type: integer
-                    format: int32
-                message:
-                    type: string
-            example:
-                code: 404
-                name: "Entity not found"
-                entity: "Account"
+              - symbol: "euler"
+                address: "0x3920123482070c1a2dff73aad695c60e7c6f6862"
+                amount: 100.00
+                amountUsd: 100.00
+      example:
+        code: 200
+        address: "0x0xf037F020771BF024a4Ea3b7329cf09519d4f7964"
+        updated: "2012-04-23T18:25:43.511Z"
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      example:
+        code: 500
+        name: "Unexpected internal error"
+    NotFound:
+      type: object
+      required:
+        - code
+        - message
+        - entity
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      example:
+        code: 404
+        name: "Entity not found"
+        entity: "Account"
