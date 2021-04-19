@@ -61,5 +61,5 @@ components:
                 message:
                     type: string
             example: 
-                code: 123
-                name: "This request can't be fulfilled" 
+                code: 500
+                name: "Unexpected internal error" 
