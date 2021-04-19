@@ -74,7 +74,7 @@ components:
             example: 
                 version: "0.0.1"
                 name: "beta"
-        NotFound:
+        Balance:
             type: object
             required:
                 - address
@@ -84,7 +84,19 @@ components:
                     type: string
                 updated:
                     type: string
-                balance: object
+                balance:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            symbol: 
+                                type: string
+                            address: 
+                                type: string
+                            amount: 
+                                type: string
+                            amountUsd: 
+                                type: string
             example:
                 code: 404
                 name: "Entity not found"
