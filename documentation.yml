@@ -112,7 +112,6 @@ components:
                 code: 200
                 address: "0x0xf037F020771BF024a4Ea3b7329cf09519d4f7964"
                 updated: "2012-04-23T18:25:43.511Z"
-                balance:
         Error:
             type: object
             required:
