@@ -82,6 +82,8 @@ components:
                 - amount
                 - amountUsd 
             properties:
+                code: 
+                    type: integer
                 address:
                     type: string
                 updated:
