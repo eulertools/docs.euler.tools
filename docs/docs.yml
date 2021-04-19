@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  version: 0.1.1
+  version: 0.0.1
   title: BSC
 servers:
   - url: https://api.dev.euler.tools/
@@ -58,7 +58,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/component/schemas/NotFound"
+                $ref: "#/components/schemas/NotFound"
 components:
   schemas:
     Version:
@@ -142,3 +142,8 @@ components:
         code: 404
         name: "Entity not found"
         entity: "Account"
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
