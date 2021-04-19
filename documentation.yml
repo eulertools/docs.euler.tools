@@ -18,7 +18,7 @@ paths:
                 - version
             responses:
                 '200':
-                    description: "Sample response: Details about the API Version"
+                    description: "Version: Details about the API Version"
                     headers:
                         x-version:
                             description: Version of the API as header for cache and validation
@@ -34,6 +34,16 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Error'
+    /bsc/account:
+        get:
+            summary: 'Get Balance for an specific address'
+            operationId: getBalance
+            tags:
+                - Balance
+                - Account
+            responses:
+                '200':
+                    description: 
 components:
     schemas:
         Version:
