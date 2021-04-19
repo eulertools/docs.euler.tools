@@ -97,7 +97,8 @@ components:
                                 type: number
                                 format: float
                             amountUsd: 
-                                type: float
+                                type: number
+                                format: float
             example:
                 code: 200
                 address: "0x0xf037F020771BF024a4Ea3b7329cf09519d4f7964"
