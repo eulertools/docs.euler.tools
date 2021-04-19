@@ -103,3 +103,4 @@ components:
             example:
                 code: 404
                 name: "Entity not found"
+                entity: "Account"
