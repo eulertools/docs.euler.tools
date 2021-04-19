@@ -1,290 +1,65 @@
-{
-  "openapi": "3.0.1",
-  "info": {
-    "title": "eulerApidevelopment",
-    "description": "Euler Api | Env: development",
-    "version": "2021-04-15T14:11:59Z"
-  },
-  "servers": [
-    {
-      "url": "https://api.dev.euler.tools/{basePath}",
-      "variables": {
-        "basePath": {
-          "default": "/bsc"
-        }
-      }
-    }
-  ],
-  "paths": {
-    "/version": {
-      "get": {
-        "security": [
-          {
-            "PipelineeulerdevelopmenteulerDeployStagedevelopmentApiauth8E94F44D": []
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Methods": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Headers": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {}
-          }
-        }
-        ]
-      },
-      "options": {
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Methods": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Headers": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {}
-          }
-        }
-      }
-    },
-    "/portfolios/{portfolio_id}/{item_id}": {
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/portfolioItemModel"
-              }
-            }
-          },
-          "required": true
-        }
-      },
-      "delete": {},
-      "options": {
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Methods": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Headers": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {}
-          }
-        }
-      }
-    },
-    "/portfolios/{portfolio_id}": {
-      "get": {},
-      "put": {},
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/portfolioItemModel"
-              }
-            }
-          },
-          "required": true
-        }
-      },
-      "delete": {},
-      "options": {
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Methods": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Headers": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {}
-          }
-        }
-      }
-    },
-    "/portfolios": {
-      "get": {},
-      "post": {},
-      "options": {
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Methods": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Headers": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {}
-          }
-        }
-      }
-    },
-
-  },
-  "components": {
-    "schemas": {
-      "symbolListSchema": {
-        "type": "object",
-        "properties": {
-          "smartContractEvent": {
-            "maxLength": 100,
-            "minLength": 1,
-            "type": "string"
-          },
-          "argument": {
-            "maxLength": 100,
-            "minLength": 1,
-            "type": "string"
-          },
-          "limit": {
-            "type": "integer"
-          },
-          "smartContractAddress": {
-            "maxLength": 100,
-            "minLength": 1,
-            "type": "string"
-          },
-          "desc": {
-            "maxLength": 100,
-            "minLength": 1,
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "candleDataSchema": {
-        "type": "object",
-        "properties": {
-          "quoteCurrency": {
-            "maxLength": 100,
-            "minLength": 1,
-            "type": "string"
-          },
-          "till": {
-            "maxLength": 100,
-            "minLength": 1,
-            "type": "string"
-          },
-          "window": {
-            "type": "integer"
-          },
-          "baseCurrency": {
-            "maxLength": 100,
-            "minLength": 1,
-            "type": "string"
-          },
-          "since": {
-            "maxLength": 100,
-            "minLength": 1,
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "portfolioItemModel": {
-        "required": [
-          "identifier",
-          "name",
-          "order",
-          "type"
-        ],
-        "type": "object",
-        "properties": {
-          "identifier": {
-            "maxLength": 50,
-            "minLength": 1,
-            "type": "string"
-          },
-          "name": {
-            "maxLength": 50,
-            "minLength": 1,
-            "type": "string"
-          },
-          "type": {
-            "maxLength": 50,
-            "minLength": 1,
-            "type": "string"
-          },
-          "order": {
-            "type": "integer"
-          }
-        },
-        "additionalProperties": false
-      }
-    },
-    "securitySchemes": {
-      "PipelineeulerdevelopmenteulerDeployStagedevelopmentApiauth8E94F44D": {
-        "type": "apiKey",
-        "name": "Authorization",
-        "in": "header",
-        "x-amazon-apigateway-authtype": "custom"
-      }
-    }
-  }
-}
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: BSC
+servers:
+- url: https://api.dev.euler.tools/
+  description: Development server
+- url: https://api.beta.euler.tools/
+  description: Beta server
+- url: https://api.euler.tools/
+  description: Production server
+paths:
+    /bsc/version:
+        get:
+            summary: 'Version endpoint: Returns details about the API Version'
+            operationId: getVersion
+            tags:
+                - version
+            responses:
+                '200':
+                    description: "Sample response: Details about the API Version"
+                    headers:
+                        x-version:
+                            description: Version of the API as header for cache and validation
+                            schema:
+                                type: string
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Version'
+                default:
+                    description: Unexpected error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+components:
+    schemas:
+        Version:
+            type: object
+            required:
+                - version
+                - name
+            properties:
+                version:
+                    type: string
+                name:
+                    type: string
+            example: 
+                version: "0.0.1"
+                name: "beta"
+        Error:
+            type: object
+            required:
+                - code
+                - message
+            properties:
+                code:
+                    type: integer
+                    format: int32
+                message:
+                    type: string
+            example: 
+                code: 123
+                name: "This request can't be fulfilled" 
