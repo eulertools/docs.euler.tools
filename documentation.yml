@@ -18,7 +18,7 @@ paths:
                 - version
             responses:
                 '200':
-                    description: "Version: Details about the API Version"
+                    description: "Details about the API Version"
                     headers:
                         x-version:
                             description: Version of the API as header for cache and validation
