@@ -94,13 +94,18 @@ components:
                             address: 
                                 type: string
                             amount: 
-                                type: string
+                                type: number
+                                format: float
                             amountUsd: 
-                                type: string
+                                type: float
             example:
-                code: 404
-                name: "Entity not found"
-                entity: "Account"
+                code: 200
+                address: "0x0xf037F020771BF024a4Ea3b7329cf09519d4f7964"
+                updated: "2012-04-23T18:25:43.511Z"
+                balance:
+                    - symbol: "euler"
+                    - address: "0x3920123482070c1a2dff73aad695c60e7c6f6862"
+                    - amount: 100
         Error:
             type: object
             required:
