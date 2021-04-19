@@ -43,7 +43,7 @@ paths:
                 - Account
             responses:
                 '200':
-                    description: 
+                    description: "Return the balance for a wallet, listing all tokens with their respective quantity"
 components:
     schemas:
         Version:
