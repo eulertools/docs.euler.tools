@@ -91,7 +91,7 @@ components:
                 balance:
                     type: array
                     items:
-                        type: array
+                        type: object
                         properties:
                             symbol: 
                                 type: string
