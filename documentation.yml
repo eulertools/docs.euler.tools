@@ -106,7 +106,8 @@ components:
                 balance:
                     - symbol: "euler"
                     - address: "0x3920123482070c1a2dff73aad695c60e7c6f6862"
-                    - amount: 100
+                    - amount: 100.00
+                    - amountUsd: 100.00
         Error:
             type: object
             required:
