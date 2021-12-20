@@ -36,7 +36,7 @@ paths:
                 $ref: "#/components/schemas/Error"
   /bsc/account:
     get:
-      summary: "Get Balance for an specific address"
+      summary: "Get Balance for a specific address"
       operationId: getBalance
       tags:
         - Balance
