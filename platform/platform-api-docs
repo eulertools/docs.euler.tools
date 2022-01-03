@@ -11277,56 +11277,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/App_addresses'
-  /market/swaps/liquidations/{instrument}/latest:
-    get:
-      summary: 'Liquidations - Latest'
-      description: Retrieves the latest liquidations for the specified instrument and exchange(s).
-      operationId: getLiquidationsLatest
-      tags:
-        - Swaps
-      parameters:
-        - name: instrument
-          in: path
-          description: The instrument for which to retrieve the most current data.
-          required: true
-          schema:
-            type: string
-            example: BTC/USD
-        - name: exchange
-          in: query
-          description: The exchange(s) for which to retrieve the most current data (comma separated).
-          required: false
-          schema:
-            type: string
-            example: bitfinex,bitstamp
-        - name: format
-          in: query
-          description:  Format of the return payload. [Defaults] csv | json*
-          required: false
-          schema:
-            type: string
-            example: csv
-        - name: fields
-          in: query
-          description: List of fields to include in the return payload - can only be used in combination with option format=csv.
-          required: false
-          schema:
-            type: string
-            example: timestamp
-        - name: timeFormat
-          in: query
-          description: Time format of the timestamps in the return payload. ([Defaults] milliseconds | ms* | iso | iso8611 | hr | human_readable)
-          required: false
-          schema:
-            type: string
-            example: iso
-      responses:
-        '200':
-          description: 'Array containing latest liquidations for the specified instrument and exchange(s).'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Swaps_Liquidations_latest'
 components:
   schemas:
     All_Symbol_prices:
@@ -20123,33 +20073,5 @@ components:
          }
          ]
           }
-    Swaps_Liquidations_latest:
-      type: object
-      properties:
-        "status":
-          type: integer 
-          format: int64
-          example: 200
-        "title":
-          type: string
-          example: "OK"
-        "description":
-          type: string
-          example: "Successful request"
-        "payload":
-          type: array
-          items: 
-            type: object
-          example: [
-           {
-           "exchange": "binance",
-           "timestamp": "2020-09-04T21:14:48.171Z",
-           "originalQuantity": 200,
-           "price": 2.831,
-           "side": "BUY",
-           "status": "FILLED",
-           "type": "LIMIT",
-           "timeInForce": "IOC"
-           }
-         ]
+    
     
