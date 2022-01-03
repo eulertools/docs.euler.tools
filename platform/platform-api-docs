@@ -8425,7 +8425,7 @@ paths:
   /market/swaps/liquidations/{instrument}/latest:
     get:
       summary: 'Liquidations - Latest'
-      description: 'Retrieves the latest liquidations for the specified instrument and exchange(s).'
+      description: Retrieves the latest liquidations for the specified instrument and exchange(s).
       operationId: getLiquidationsLatest
       tags:
         - Swaps
