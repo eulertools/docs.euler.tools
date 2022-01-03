@@ -16598,9 +16598,7 @@ components:
         "payload":
           type: array
           items: 
-            type: array
-            items:
-              type: object
+            type: object
           example: [
            {
            "exchange": "binance",
@@ -16612,7 +16610,7 @@ components:
            "type": "LIMIT",
            "timeInForce": "IOC"
            }
-        ]
+         ]
     Swaps_Liquidations_historical:
       type: object
       properties:
