@@ -16582,35 +16582,6 @@ components:
            },
            {...}
            ]
-    Swaps_Liquidations_latest:
-      type: object
-      properties:
-        "status":
-          type: integer 
-          format: int64
-          example: 200
-        "title":
-          type: string
-          example: "OK"
-        "description":
-          type: string
-          example: "Successful request"
-        "payload":
-          type: array
-          items: 
-            type: object
-          example: [
-           {
-           "exchange": "binance",
-           "timestamp": "2020-09-04T21:14:48.171Z",
-           "originalQuantity": 200,
-           "price": 2.831,
-           "side": "BUY",
-           "status": "FILLED",
-           "type": "LIMIT",
-           "timeInForce": "IOC"
-           }
-         ]
     Swaps_Liquidations_historical:
       type: object
       properties:
