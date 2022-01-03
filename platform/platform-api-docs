@@ -8436,35 +8436,35 @@ paths:
           required: true
           schema:
             type: string
-            example: "BTC/USD"
+            example: BTC/USD
         - name: exchange
           in: query
           description: The exchange(s) for which to retrieve the most current data (comma separated).
           required: false
           schema:
             type: string
-            example: "bitfinex,bitstamp"
+            example: bitfinex,bitstamp
         - name: format
           in: query
           description:  Format of the return payload. [Defaults] csv | json*
           required: false
           schema:
             type: string
-            example: "csv"
+            example: csv
         - name: fields
           in: query
           description: List of fields to include in the return payload - can only be used in combination with option format=csv.
           required: false
           schema:
             type: string
-            example: "timestamp"
+            example: timestamp
         - name: timeFormat
           in: query
           description: Time format of the timestamps in the return payload. ([Defaults] milliseconds | ms* | iso | iso8611 | hr | human_readable)
           required: false
           schema:
             type: string
-            example: "iso"
+            example: iso
       responses:
         '200':
           description: 'Array containing latest liquidations for the specified instrument and exchange(s).'
