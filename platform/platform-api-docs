@@ -12,8 +12,8 @@ tags:
   - name: Addresses
   - name: Uncles
   - name: Contracts
-  - name: Defi-Dex 
-  - name: Futures 
+  - name: Defi-Dex
+  - name: Futures
   - name: Spot
   - name: Swaps
   - name: Market metrics
@@ -32,10 +32,10 @@ paths:
           in: query
           description: The symbols to retrieve the prices for.
           required: false
-          allowReserved: true 
+          allowReserved: true
           schema:
             type: array
-            items: 
+            items:
               type: string
               example: bnb, bake
       responses:
@@ -532,7 +532,7 @@ paths:
           required: true
           schema:
             type: string
-            example: ethereum-mainnet 
+            example: ethereum-mainnet
         - name: direction
           in: query
           description: The sort order in which tokens are ranked (ascending or descending).
@@ -647,7 +647,7 @@ paths:
           required: true
           schema:
             type: string
-            example: ethereum-mainnet 
+            example: ethereum-mainnet
       responses:
         '200':
           description: 'An object containing historical addresses rankings'
@@ -817,7 +817,7 @@ paths:
           required: true
           schema:
             type: string
-            example: ethereum-mainnet 
+            example: ethereum-mainnet
       responses:
         '200':
           description: 'Array of token transfer objects.'
@@ -860,14 +860,14 @@ paths:
           required: true
           schema:
             type: string
-            example: ethereum-mainnet 
+            example: ethereum-mainnet
       responses:
         '200':
           description: 'An object containing supply chain record'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/supplies'  
+                $ref: '#/components/schemas/supplies'
   /tokens/{hash}/supplies/historical:
     get:
       summary: 'Supply - Historical'
@@ -1003,7 +1003,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/All' 
+                $ref: '#/components/schemas/All'
   /blocks/{id}:
     get:
       summary: 'Blocks - Single'
@@ -1648,7 +1648,7 @@ paths:
             example: false
         - name: includeTokenTransfers
           in: query
-          description: Indicates whether or not to include token transfers information for each transaction, if available 
+          description: Indicates whether or not to include token transfers information for each transaction, if available
           required: true
           schema:
             type: boolean
@@ -1769,7 +1769,7 @@ paths:
             example: false
         - name: includeTokenTransfers
           in: query
-          description: Indicates whether or not to include token transfers information for each transaction, if available 
+          description: Indicates whether or not to include token transfers information for each transaction, if available
           required: true
           schema:
             type: boolean
@@ -1833,7 +1833,7 @@ paths:
       parameters:
         - name: blockNumber
           in: query
-          description: Block number for which to retrieve the data 
+          description: Block number for which to retrieve the data
           required: false
           schema:
             type: string
@@ -2269,7 +2269,7 @@ paths:
       parameters:
         - name: hash
           in: path
-          description: address to retrieve the account balance for 
+          description: address to retrieve the account balance for
           required: true
           schema:
             type: string
@@ -2326,7 +2326,7 @@ paths:
       parameters:
         - name: hash
           in: path
-          description: The address to retrieve the account balances for 
+          description: The address to retrieve the account balances for
           required: true
           schema:
             type: string
@@ -2468,7 +2468,7 @@ paths:
       parameters:
         - name: hash
           in: path
-          description: The address for which to retrieve balances. 
+          description: The address for which to retrieve balances.
           required: true
           schema:
             type: string
@@ -2518,7 +2518,7 @@ paths:
       parameters:
         - name: addresses
           in: query
-          description: A comma separated list of addresses. NOTE  Max 50 addresses per request! 
+          description: A comma separated list of addresses. NOTE  Max 50 addresses per request!
           required: true
           schema:
             type: string
@@ -3716,7 +3716,7 @@ paths:
       parameters:
         - name: hash
           in: path
-          description: The address of the contract 
+          description: The address of the contract
           required: true
           schema:
             type: string
@@ -3745,7 +3745,7 @@ paths:
       parameters:
         - name: hash
           in: path
-          description: The address of the contract 
+          description: The address of the contract
           required: true
           schema:
             type: string
@@ -3774,7 +3774,7 @@ paths:
       parameters:
         - name: hash
           in: path
-          description: The hash (keccak 256) of the signature (4 bytes) 
+          description: The hash (keccak 256) of the signature (4 bytes)
           required: true
           schema:
             type: string
@@ -3810,7 +3810,7 @@ paths:
             example: aave
         - name: includeDates
           in: query
-          description: Add startDate and endDate to the returned payload. Helpful to know how long an asset has existed. 
+          description: Add startDate and endDate to the returned payload. Helpful to know how long an asset has existed.
           required: true
           schema:
             type: boolean
@@ -5440,7 +5440,7 @@ paths:
             example: binance
         - name: startDate
           in: query
-          description: Payload only includes data after this date (inclusive). Beginning of the current hour (max time range is 1 hour). 
+          description: Payload only includes data after this date (inclusive). Beginning of the current hour (max time range is 1 hour).
           required: false
           schema:
             type: string
@@ -5604,7 +5604,7 @@ paths:
             example: binance
         - name: startDate
           in: query
-          description: Payload only includes data after this date (inclusive). Beginning of the current hour (max time range is 1 hour). 
+          description: Payload only includes data after this date (inclusive). Beginning of the current hour (max time range is 1 hour).
           required: false
           schema:
             type: string
@@ -6060,7 +6060,7 @@ paths:
       parameters:
         - name: instrument
           in: path
-          description:  The instrument for which to retrieve the most current data. 
+          description:  The instrument for which to retrieve the most current data.
           required: true
           schema:
             type: string
@@ -7145,7 +7145,7 @@ paths:
             example: binance
         - name: includeDates
           in: query
-          description: Include date ranges for each record. 
+          description: Include date ranges for each record.
           required: false
           schema:
             type: boolean
@@ -7940,7 +7940,7 @@ paths:
   /market/swaps/exchanges/information:
     get:
       summary: 'Exchanges- Pairs'
-      description: Retrieves information about supported exchange & pairs 
+      description: Retrieves information about supported exchange & pairs
       operationId: getPairsInformation
       tags:
         - Swaps
@@ -8857,7 +8857,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Swaps_OrderBooks_info'
-  /market/swaps/order-book-events/{instrument}/historical: 
+  /market/swaps/order-book-events/{instrument}/historical:
     get:
       summary: 'Order Books - Events Historical'
       description: Retrieves the historical time series order book events (bid and ask) for the specified instrument and exchange(s).
@@ -9906,7 +9906,7 @@ paths:
       description: Retrieves the list of all available market asset twap data sets.
       operationId: getAssetsInformation
       tags:
-        - Defi-Dex 
+        - Defi-Dex
       parameters:
         - name: format
           in: query
@@ -9935,7 +9935,7 @@ paths:
       description: Retrieves the latest minute by minute twap for the specified asset (for example DAI).
       operationId: getAssetsLatest
       tags:
-        - Defi-Dex 
+        - Defi-Dex
       parameters:
         - name: asset
           in: path
@@ -9986,7 +9986,7 @@ paths:
       description: Retrieves the historical minute by minute twap for the specified asset (for example DAI)
       operationId: getAssetsHistorical
       tags:
-        - Defi-Dex 
+        - Defi-Dex
       parameters:
         - name: asset
           in: path
@@ -10058,7 +10058,7 @@ paths:
       description: Retrieves the list of all available market pair TWAP data sets.
       operationId: getPairsInformation
       tags:
-        - Defi-Dex 
+        - Defi-Dex
       parameters:
         - name: pair
           in: query
@@ -10101,7 +10101,7 @@ paths:
       description: Retrieves the latest TWAP for the specified base, quote pair - this is the global TWAP across all supported contracts based on minutely data.
       operationId: getPairsLatest
       tags:
-        - Defi-Dex 
+        - Defi-Dex
       parameters:
         - name: base
           in: path
@@ -10159,7 +10159,7 @@ paths:
       description: Retrieves the historical TWAP for the specified base, quote pair - this is the global TWAP across all supported contracts.
       operationId: getPairsHistorical
       tags:
-        - Defi-Dex 
+        - Defi-Dex
       parameters:
         - name: base
           in: path
@@ -10234,7 +10234,7 @@ paths:
       description: Retrieves the list of all available market asset vwap data sets.
       operationId: getAssetsInformation
       tags:
-        - Defi-Dex 
+        - Defi-Dex
       parameters:
         - name: format
           in: query
@@ -10263,7 +10263,7 @@ paths:
       description: Retrieves the latest minute by minute vwap for the specified aset (for example DAI).
       operationId: getAssetsLatest
       tags:
-        - Defi-Dex 
+        - Defi-Dex
       parameters:
         - name: asset
           in: path
@@ -10314,7 +10314,7 @@ paths:
       description: Retrieves the historical minute by minute twap for the specified asset (for example DAI).
       operationId: getAssetsHistorical
       tags:
-        - Defi-Dex 
+        - Defi-Dex
       parameters:
         - name: asset
           in: path
@@ -10386,7 +10386,7 @@ paths:
       description: Retrieves the list of all available market pair VWAP data sets.
       operationId: getPairsInformation
       tags:
-        - Defi-Dex 
+        - Defi-Dex
       parameters:
         - name: pair
           in: query
@@ -10429,7 +10429,7 @@ paths:
       description: Retrieves the latest VWAP for the specified base, quote pair - this is the global VWAP across all supported contracts based on minutely data.
       operationId: getPairsLatest
       tags:
-        - Defi-Dex 
+        - Defi-Dex
       parameters:
         - name: base
           in: path
@@ -10487,7 +10487,7 @@ paths:
       description: Retrieves the historical VWAP for the specified base, quote pair - this is the global VWAP across all supported contracts.
       operationId: getPairsHistorical
       tags:
-        - Defi-Dex 
+        - Defi-Dex
       parameters:
         - name: base
           in: path
@@ -10841,8 +10841,8 @@ paths:
   /market/spot/twap/pairs/{pair}/historical:
     get:
       summary: 'Global TWAP - Pairs Historical '
-      description: Retrieves the historical TWAP for the specified pair 
-      operationId: getPairsHistorical 
+      description: Retrieves the historical TWAP for the specified pair
+      operationId: getPairsHistorical
       tags:
         - Spot
       parameters:
@@ -10935,7 +10935,7 @@ paths:
       tags:
         - Explorers
       parameters:
-        - name: address  
+        - name: address
           in: query
           description: "The token address for the proposal"
           required: true
@@ -10957,12 +10957,12 @@ paths:
       tags:
         - Explorers
       parameters:
-        - name: address 
+        - name: address
           in: query
           description: "The pair address for the proposal"
           required: true
           schema:
-            type: string 
+            type: string
             example: "0xc2Eed0F5a0dc28cfa895084bC0a9B8B8279aE492"
       responses:
         '200':
@@ -10979,13 +10979,13 @@ paths:
       tags:
         - Explorers
       parameters:
-        - name: total 
+        - name: total
           in: query
           description: "Total number of tokens proposals"
           required: false
           schema:
             type: integer
-            format: int32 
+            format: int32
             example: 3
         - name: limit
           in: query
@@ -11018,7 +11018,7 @@ paths:
       tags:
         - Explorers
       parameters:
-        - name: total 
+        - name: total
           in: query
           description: "Total number of pairs proposals"
           required: false
@@ -11040,7 +11040,7 @@ paths:
           required: false
           schema:
             type: integer
-            format: int32 
+            format: int32
             example: 0
       responses:
         '200':
@@ -11131,7 +11131,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/App_trades'
-  /pairs/{pair}:  
+  /pairs/{pair}:
      get:
       summary: 'Pair'
       operationId: getPair
@@ -11145,7 +11145,7 @@ paths:
           required: true
           schema:
             type: string
-            example: "0xCA56457F274921bc97319bCe79e04fd7196Ef203"   
+            example: "0xCA56457F274921bc97319bCe79e04fd7196Ef203"
       responses:
         '200':
           description: 'Object containing pair information'
@@ -11153,7 +11153,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/App_pair'
-  /pairs:  
+  /pairs:
     post:
       summary: 'Pairs'
       operationId: getPairs
@@ -11241,7 +11241,7 @@ paths:
           schema:
             type: string
             example: "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c"
-        - name: fields[] 
+        - name: fields[]
           in: query
           description: 'Currency'
           required: true
@@ -11505,7 +11505,7 @@ components:
                 "velocity" # The token velocity.
             ],
             "endDate": 1549504920000, # The end of the time frame.
-            "startDate": 1549504680000 
+            "startDate": 1549504680000
         }
        }
     metrics_volume:
@@ -11698,7 +11698,7 @@ components:
         "isERC884": false,
         "isERC998": false
         }
-        ]   
+        ]
         }
     supplies:
       type: object
@@ -12102,7 +12102,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -12130,7 +12130,7 @@ components:
            "reward": "1.7500000000000000"
            },
            {...}
-           ] 
+           ]
     Transfers:
       type: object
       properties:
@@ -12205,7 +12205,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
       {
@@ -12485,7 +12485,7 @@ components:
         "valueAverageUSD": "305.2421115222310585047",
         "valueTotal": "1633069947939517216169913",
         "valueTotalUSD": "219401314.435726198452384",
-        "valueUnit": "wei", 
+        "valueUnit": "wei",
         "functionsTotal": "2040068", # //Account Based Blockchains
         "gasPriceAverage": "14525559370.27676717",
         "inputsAverage": "2.4412388182636623",# // UTXO Based Blockchains
@@ -13026,7 +13026,7 @@ components:
             },
             ...
         ]
-        } 
+        }
     Addresses_mempool:
       type: object
       properties:
@@ -14052,7 +14052,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
           {
@@ -14114,7 +14114,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
           {
@@ -14145,7 +14145,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -14178,7 +14178,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example:  [
            {
@@ -14225,13 +14225,13 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
-           "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", 
-           "startDate": "2020-05-05T00:00:00.000Z", 
-           "endDate": "2021-10-05T18:55:00.000Z", 
+           "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+           "startDate": "2020-05-05T00:00:00.000Z",
+           "endDate": "2021-10-05T18:55:00.000Z",
            },
         ]
     Prices_latest:
@@ -14299,21 +14299,21 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
-           "baseAddress": "0x0000000000004946c0e9f43f4dee607b0ef1fa1c", 
-           "quoteAddress": "0x0000000000b3f879cb30fe243b4dfee438691c04", 
-           "startDate": 1595462400000, 
-           "endDate": 1614556800000, 
+           "baseAddress": "0x0000000000004946c0e9f43f4dee607b0ef1fa1c",
+           "quoteAddress": "0x0000000000b3f879cb30fe243b4dfee438691c04",
+           "startDate": 1595462400000,
+           "endDate": 1614556800000,
            },
         ]
     Bases_latest:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14333,7 +14333,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14379,7 +14379,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14454,7 +14454,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14578,7 +14578,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14633,7 +14633,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14676,7 +14676,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14687,7 +14687,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -14702,7 +14702,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14726,7 +14726,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14754,7 +14754,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14781,7 +14781,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14792,7 +14792,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example:  [
            {
@@ -14807,7 +14807,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14837,7 +14837,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14848,7 +14848,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -14863,7 +14863,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14874,7 +14874,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -14892,7 +14892,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14926,7 +14926,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14937,7 +14937,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -14952,7 +14952,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -14963,7 +14963,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -14979,7 +14979,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15011,7 +15011,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15022,7 +15022,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -15037,7 +15037,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15048,7 +15048,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -15065,7 +15065,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15098,7 +15098,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15109,7 +15109,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -15124,7 +15124,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15135,7 +15135,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -15148,7 +15148,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15177,7 +15177,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15188,7 +15188,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -15209,7 +15209,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15258,7 +15258,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15269,7 +15269,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -15284,7 +15284,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15306,7 +15306,7 @@ components:
           "binance",
           "2020-08-17 06:03:00",
           NULL,
-          false,     
+          false,
          [
           [11800.76, 1.011, 0],
           [11800.96, 1.013, 0],
@@ -15333,7 +15333,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15344,7 +15344,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
           {
@@ -15359,7 +15359,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15386,7 +15386,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15433,7 +15433,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15459,7 +15459,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15497,7 +15497,7 @@ components:
              "endDate": "2020-09-23T15:42:15.702Z"
              }
              }
-    Exchanges:  
+    Exchanges:
       type: object
       properties:
         "payload":
@@ -15551,7 +15551,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15594,7 +15594,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15605,7 +15605,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -15619,7 +15619,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15641,7 +15641,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15652,7 +15652,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -15664,11 +15664,11 @@ components:
            },
            {...}
            ]
-    Spot_pairs: 
+    Spot_pairs:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15679,7 +15679,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -15693,7 +15693,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15715,7 +15715,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15726,7 +15726,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -15742,7 +15742,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15783,7 +15783,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15809,7 +15809,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15857,7 +15857,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15882,7 +15882,7 @@ components:
             null // numOrders
           ],
           ...
-        ],         
+        ],
         1123662827 //sequence
       ],
       ...
@@ -15897,7 +15897,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15937,7 +15937,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15948,7 +15948,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -15962,7 +15962,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15983,7 +15983,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -15994,7 +15994,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -16009,7 +16009,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16020,7 +16020,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -16034,7 +16034,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16055,7 +16055,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16066,7 +16066,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -16081,7 +16081,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16116,7 +16116,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16140,7 +16140,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16188,7 +16188,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16214,7 +16214,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16256,7 +16256,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16311,7 +16311,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16354,7 +16354,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16365,7 +16365,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example:  [
            {
@@ -16380,7 +16380,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16404,7 +16404,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16432,7 +16432,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16443,7 +16443,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -16458,7 +16458,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16469,7 +16469,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -16482,7 +16482,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16510,7 +16510,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16521,7 +16521,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -16536,7 +16536,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16569,7 +16569,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16580,7 +16580,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -16595,7 +16595,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16606,7 +16606,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -16623,7 +16623,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16656,7 +16656,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16667,7 +16667,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -16682,7 +16682,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16693,7 +16693,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -16706,7 +16706,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16735,7 +16735,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16746,7 +16746,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -16761,7 +16761,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16808,7 +16808,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16819,7 +16819,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -16834,7 +16834,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16881,7 +16881,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16892,7 +16892,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -16907,7 +16907,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16918,7 +16918,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -16934,7 +16934,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16981,7 +16981,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -16992,7 +16992,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -17007,7 +17007,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17044,12 +17044,12 @@ components:
       "startDate": "2020-09-23T14:42:15.702Z",
       "endDate": "2020-09-23T15:42:15.702Z"
      }
-     } 
+     }
     Market_Metrics_latest:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17080,7 +17080,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17119,7 +17119,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17155,7 +17155,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17200,7 +17200,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17211,7 +17211,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -17246,7 +17246,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17257,7 +17257,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -17317,11 +17317,11 @@ components:
             "apr": 0.08453936649084533
            }
         ]
-    Market_Rankings_assets: 
+    Market_Rankings_assets:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17367,7 +17367,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17389,7 +17389,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17440,7 +17440,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17451,7 +17451,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -17472,7 +17472,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17551,7 +17551,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17562,7 +17562,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -17575,7 +17575,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17597,7 +17597,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17627,7 +17627,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17638,7 +17638,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -17653,7 +17653,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17675,7 +17675,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17709,7 +17709,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17720,7 +17720,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -17733,7 +17733,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17755,7 +17755,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17785,7 +17785,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17811,7 +17811,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17833,7 +17833,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17867,7 +17867,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17878,7 +17878,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -17892,7 +17892,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17914,7 +17914,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17925,7 +17925,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -17941,7 +17941,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17952,7 +17952,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -17966,7 +17966,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17988,7 +17988,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -17999,7 +17999,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -18378,7 +18378,7 @@ components:
             "create_date": 1635515912000,
             "update_date": 1635515912000,
             "readable_create_date": "2021-10-29T13:58:32.000Z",
-            "readable_update_date": "2021-10-29T13:58:32.000Z", 
+            "readable_update_date": "2021-10-29T13:58:32.000Z",
           }]
     App_tokens:
       type: object
@@ -19900,7 +19900,7 @@ components:
            }
            ]
          }
-    App_markets: 
+    App_markets:
       type: object
       properties:
         payload:
@@ -20077,7 +20077,7 @@ components:
       type: object
       properties:
         "status":
-          type: integer 
+          type: integer
           format: int64
           example: 200
         "title":
@@ -20088,7 +20088,7 @@ components:
           example: "Successful request"
         "payload":
           type: array
-          items: 
+          items:
             type: object
           example: [
            {
@@ -20102,4 +20102,4 @@ components:
            "timeInForce": "IOC"
            }
          ]
-    
+
