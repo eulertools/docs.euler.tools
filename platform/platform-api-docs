@@ -20159,4 +20159,85 @@ components:
            "timeInForce": "IOC"
            }
          ]
+    Exchanges_info:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+           type: object
+           example: {
+         "deribit": {
+         "BTC-10DEC21-58000-P": {
+        "open_interest": {
+          "startDate": "2021-11-18 16:53:00 000",
+          "endDate": "2021-12-03 17:32:00 000"
+        },
+        "liquidation_order": {
+          "startDate": "2021-12-03 16:56:35 102",
+          "endDate": "2021-12-03 16:56:35 102"
+        },
+        "ohlcv": {
+          "startDate": "2021-11-18 14:30:00 000",
+          "endDate": "2021-12-03 17:55:00 000"
+        },
+        "order_book_event": {
+          "startDate": null,
+          "endDate": null
+        },
+        "order_book_snapshot": {
+          "startDate": "2021-11-18 08:04:00 000",
+          "endDate": "2021-12-03 17:56:00 000"
+        },
+        "ticker": {
+          "startDate": "2021-11-18 08:04:17 583",
+          "endDate": "2021-12-03 17:56:40 916"
+        },
+        "trade": {
+          "startDate": "2021-11-18 13:36:59 263",
+          "endDate": "2021-12-03 13:45:14 337"
+        }
+        },
+        "ETH-31DEC21-6500-P": {
+        "open_interest": {
+          "startDate": "2021-11-16 07:04:00 000",
+          "endDate": "2021-12-03 17:32:00 000"
+        },
+        "liquidation_order": {
+          "startDate": null,
+          "endDate": null
+        },
+        "ohlcv": {
+          "startDate": "2021-11-26 23:28:00 000",
+          "endDate": "2021-12-03 17:55:00 000"
+        },
+        "order_book_event": {
+          "startDate": null,
+          "endDate": null
+        },
+        "order_book_snapshot": {
+          "startDate": "2021-11-17 15:24:00 000",
+          "endDate": "2021-12-03 17:56:00 000"
+        },
+        "ticker": {
+          "startDate": "2021-11-17 10:38:46 409",
+          "endDate": "2021-12-03 17:56:40 881"
+        },
+        "trade": {
+          "startDate": "2021-11-26 23:28:27 263",
+          "endDate": "2021-11-26 23:28:27 263"
+        }
+        },
+        ...
+        },
+        ...
+        }
 
