@@ -11277,6 +11277,63 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/App_addresses'
+  /market/options/exchanges/information:
+    get:
+      summary: 'Exchanges - Instruments'
+      description: Retrieves information about supported exchange & instruments.
+      operationId: getExchangesInformation
+      tags:
+        - Options
+      parameters:
+        - name: exchange
+          in: query
+          description: Only return data for the given exchange(s) (comma separated)
+          required: false
+          schema:
+            type: string
+            example: Uniswap
+        - name: instrument
+          in: query
+          description: Only return data for the given instrument(s) (comma separated)
+          required: false
+          schema:
+            type: string
+            example: AAVEUSDT
+        - name: includeDates
+          in: query
+          description: Include date ranges for each record.
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: exchange,asset
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Object containing information about supported exchange & instruments'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exchanges_info'
 components:
   schemas:
     All_Symbol_prices:
