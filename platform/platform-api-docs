@@ -5,6 +5,9 @@ info:
   description: Enterprise Platform API
 servers:
   - url: 'localhost:3000'
+    description: 'Computer development environment'
+  - url: 'https://platform.prod.euler.tools'
+    description: 'Production Environment'
 tags:
   - name: Tokens
   - name: Blocks
