@@ -11280,6 +11280,1132 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/App_addresses'
+  /market/options/exchanges/information:
+    get:
+      summary: 'Exchanges - Instruments'
+      description: Retrieves information about supported exchange & instruments.
+      operationId: getExchangesInformation
+      tags:
+        - Options
+      parameters:
+        - name: exchange
+          in: query
+          description: Only return data for the given exchange(s) (comma separated)
+          required: false
+          schema:
+            type: string
+            example: Uniswap
+        - name: instrument
+          in: query
+          description: Only return data for the given instrument(s) (comma separated)
+          required: false
+          schema:
+            type: string
+            example: AAVEUSDT
+        - name: includeDates
+          in: query
+          description: Include date ranges for each record.
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: exchange,asset
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Object containing information about supported exchange & instruments'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Exchanges_info'
+  /market/options/exchanges/reference:
+    get:
+      summary: 'Exchanges - Reference'
+      description: Retrieves reference information for each of the pairs.
+      operationId: getExchangesReference
+      tags:
+        - Options
+      parameters:
+        - name: exchange
+          in: query
+          description: Only return data for the given exchange(s) (comma separated)
+          required: false
+          schema:
+            type: string
+            example: Uniswap
+        - name: instrument
+          in: query
+          description: Only return data for the given instrument(s) (comma separated)
+          required: false
+          schema:
+            type: string
+            example: AAVEUSDT
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: exchange,asset
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Object containing information about supported exchange & instruments'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Exchanges_reference'
+  /market/options/liquidations/information:
+    get:
+      summary: 'Liquidations - Information'
+      description: Retrieves the list of all the available exchanges, supported instruments and time range availability.
+      operationId: getLiquidationsInformation
+      tags:
+        - Options
+      parameters:
+        - name: exchange
+          in: query
+          description:  The exchange(s) for which to retrieve the most current data (comma separated). [Default] All available exchanges.
+          required: false
+          schema:
+            type: string
+            example: Uniswap
+        - name: includeInactive
+          in: query
+          description: If true, endpoint returns all instruments, including delisted ones.
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - name: includeDates
+          in: query
+          description: Include date ranges for each record.
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: exchange,asset
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Array containing list of all the available exchanges'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Liquidations_info'
+  /market/options/liquidations/{instrument}/latest:
+    get:
+      summary: 'Liquidations - Latest'
+      description: Retrieves the latest liquidations for the specified instrument and exchange(s).
+      operationId: getLiquidationsLatest
+      tags:
+        - Options
+      parameters:
+        - name: instrument
+          in: path
+          description: The instrument for which to retrieve the most current data.
+          required: true
+          schema:
+            type: string
+            example: ETH-30SEP22-9000-P
+        - name: exchange
+          in: query
+          description:  The exchange(s) for which to retrieve the most current data (comma separated). [Default] All available exchanges.
+          required: false
+          schema:
+            type: string
+            example: Uniswap
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: exchange,asset
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Array containing the latest liquidations for the specified instrument and exchange(s)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Liquidations_latest'
+  /market/options/liquidations/{instrument}/historical:
+    get:
+      summary: 'Liquidations - Historical'
+      description: Retrieves the historical time series liquidations for the specified instrument and exchange(s).
+      operationId: getLiquidationsHistorical
+      tags:
+        - Options
+      parameters:
+        - name: instrument
+          in: path
+          description: The instrument for which to retrieve the most current data.
+          required: true
+          schema:
+            type: string
+            example: ETH-30SEP22-9000-P
+        - name: exchange
+          in: query
+          description:  The exchange(s) for which to retrieve the most current data (comma separated). [Default] All available exchanges.
+          required: false
+          schema:
+            type: string
+            example: Uniswap
+        - name: startDate
+          in: query
+          description: Payload only includes data after this date (inclusive). [Formats] seconds | milliseconds | iso8601
+          required: false
+          schema:
+            type: string
+            example: "2020-09-01T01:00:00"
+        - name: endDate
+          in: query
+          description: Payload only includes data before this date (exclusive). [Formats] seconds | milliseconds | iso8601
+          required: false
+          schema:
+            type: string
+            example: "2020-09-01T01:00:00"
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: exchange,asset
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Object containing historical time series liquidations for the specified instrument and exchange(s)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Liquidations_historical'
+  /market/options/ohlcv/information:
+    get:
+      summary: 'OHLCV - Information'
+      description: Retrieves the list of all the available exchanges, supported instruments and time range availability.
+      operationId: getOhlcvInformation
+      tags:
+        - Options
+      parameters:
+        - name: exchange
+          in: query
+          description:  The exchange(s) for which to retrieve the most current data (comma separated). [Default] All available exchanges.
+          required: false
+          schema:
+            type: string
+            example: Uniswap
+        - name: includeInactive
+          in: query
+          description: If true, endpoint returns all instruments, including delisted ones.
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - name: timeInterval
+          in: query
+          description: Time interval. [Defaults] minutes* | hours | days | weeks
+          required: false
+          schema:
+            type: string
+            example: minutes
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: exchange,asset
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Array containing list of all the available exchanges'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_OHLCV_information'  
+  /market/options/ohlcv/{instrument}/latest: 
+    get:
+      summary: 'OHLCV - Latest'
+      description: Retrieves the latest Open High Low Close Volume data for the specified instrument.
+      operationId: getOhlcvLatest
+      tags:
+        - Options
+      parameters:
+        - name: instrument
+          in: path
+          description: The instrument for which to retrieve the most current data.
+          required: true
+          schema:
+            type: string
+            example: BTC-10DEC21-100000-C 
+        - name: exchange
+          in: query
+          description:  The exchange(s) for which to retrieve the most current data (comma separated). [Default] All available exchanges.
+          required: false
+          schema:
+            type: string
+            example: Uniswap
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: timeInterval
+          in: query
+          description: Time interval. [Defaults] minutes* | hours | days | weeks
+          required: false
+          schema:
+            type: string
+            example: minutes
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: exchange,asset
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Array containing latest Open High Low Close Volume data for the specified instrument.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_OHLCV_latest'
+  /market/options/ohlcv/{instrument}/historical:
+    get:
+      summary: 'OHLCV - Historical'
+      description: Retrieves the historical time series OHLCV data for the specified instrument and exchange(s).
+      operationId: getOhlcvHistorical
+      tags:
+        - Options
+      parameters:
+        - name: instrument
+          in: path
+          description: The instrument for which to retrieve the requested data.
+          required: true
+          schema:
+            type: string
+            example: BTC-10DEC21-100000-C
+        - name: exchange
+          in: query
+          description: The exchange(s) for which to retrieve the requested data (comma separated).
+          required: true
+          schema:
+            type: string
+            example: deribit
+        - name: startDate
+          in: query
+          description: Payload only includes data after this date (inclusive). [Formats] seconds | milliseconds | iso8601
+          required: false
+          schema:
+            type: string
+            example: "2020-09-01T01:00:00"
+        - name: endDate
+          in: query
+          description: Payload only includes data before this date (exclusive). [Formats] seconds | milliseconds | iso8601
+          required: false
+          schema:
+            type: string
+            example: "2020-09-01T01:00:00"
+        - name: timeInterval
+          in: query
+          description: Time interval to return the historical data in ("days" | "hours" | "minutes")
+          required: false
+          schema:
+            type: string
+            example: hours
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: timestamp
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Object containing historical time series OHLCV data for the specified instrument and exchange(s).'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_OHLCV_historical'
+  /market/options/open-interest/information:
+    get:
+      summary: 'Open Interest - Information'
+      description: Retrieves the list of all the available exchanges, supported instruments and time range availability.
+      operationId: getOpenInterestInformation
+      tags:
+        - Options
+      parameters:
+        - name: exchange
+          in: query
+          description: The exchange(s) for which to retrieve the most current data (comma separated).[Default] All available exchanges.
+          required: false
+          schema:
+            type: string
+            example: deribit
+        - name: includeInactive
+          in: query
+          description: If true, endpoint returns all instruments, including delisted ones.
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: exchange
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Array containing list of all the available exchanges'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Open_Interest_info'
+  /market/options/open-interest/{instrument}/latest:
+    get:
+      summary: 'Open Interest - Latest'
+      description: Retrieves the latest open interest for the specified instrument.
+      operationId: getOpenInterestLatest
+      tags:
+        - Options
+      parameters:
+        - name: instrument
+          in: path
+          description: The instrument for which to retrieve the most current data.
+          required: true
+          schema:
+            type: string
+            example: BTC-10DEC21-100000-C
+        - name: exchange
+          in: query
+          description: The exchange(s) for which to retrieve the most current data (comma separated).[Default] All available exchanges.
+          required: false
+          schema:
+            type: string
+            example: deribit
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: timestamp
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Array containing latest open interest for the specified instrument.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Open_Interest_latest'
+  /market/options/open-interest/{instrument}/historical:
+    get:
+      summary: 'Open Interest - Historical'
+      description: Retrieves the historical time series open interest for the specified instrument and exchange(s).
+      operationId: getOpenInterestHistorical
+      tags:
+        - Options
+      parameters:
+        - name: instrument
+          in: path
+          description: The instrument for which to retrieve the requested data.
+          required: true
+          schema:
+            type: string
+            example: BTC-10DEC21-100000-C
+        - name: exchange
+          in: query
+          description: The exchange(s) for which to retrieve the most current data (comma separated).[Default] All available exchanges.
+          required: false
+          schema:
+            type: string
+            example: deribit
+        - name: startDate
+          in: query
+          description: Payload only includes data after this date (inclusive). [Formats] seconds | milliseconds | iso8601
+          required: false
+          schema:
+            type: string
+            example: "2020-09-01T01:00:00"
+        - name: endDate
+          in: query
+          description: Payload only includes data before this date (exclusive). [Formats] seconds | milliseconds | iso8601
+          required: false
+          schema:
+            type: string
+            example: "2020-09-01T01:00:00"
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: timestamp
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Object containing historical time series open interest for the specified instrument and exchange(s).'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Open_Interest_historical'
+  /market/options/order-book-events/information:
+    get:
+      summary: 'Order books - Events Information'
+      description: Retrieves the list of all the available exchanges, supported instruments and time range availability.
+      operationId: getOrderBooksInformation
+      tags:
+        - Options
+      parameters:
+        - name: exchange
+          in: query
+          description: The exchange(s) for which to retrieve the most current data (comma separated).
+          required: false
+          schema:
+            type: string
+            example: deribit
+        - name: includeInactive
+          in: query
+          description: If true, endpoint returns all instruments, including delisted ones.
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - name: includeDates
+          in: query
+          description: Include date ranges for each record.
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: exchance
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Array containing list of all the available exchanges'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Order_Books_information'
+  /market/options/order-book-events/{instrument}/historical:
+    get:
+      summary: 'Order books - Events historical'
+      description: Retrieves the historical time series order book events (bid and ask) for the specified instrument and exchange(s).
+      operationId: getOrderBooksHistorical
+      tags:
+        - Options
+      parameters:
+        - name: instrument
+          in: path
+          description: The instrument for which to retrieve the requested data.
+          required: true
+          schema:
+            type: string
+            example: BTC-30SEP22-50000-P
+        - name: exchange
+          in: query
+          description: The exchange(s) for which to retrieve the most current data (comma separated). [Default] All available exchanges.
+          required: false
+          schema:
+            type: string
+            example: deribit
+        - name: startDate
+          in: query
+          description: Payload only includes data after this date (inclusive). [Formats] seconds | milliseconds | iso8601
+          required: false
+          schema:
+            type: string
+            example: "2020-09-01T01:00:00"
+        - name: endDate
+          in: query
+          description: Payload only includes data before this date (exclusive). [Formats] seconds | milliseconds | iso8601
+          required: false
+          schema:
+            type: string
+            example: "2020-09-01T01:00:00"
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: exchance
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Object containing historical time series order book events (bid and ask) for the specified instrument and exchange(s).'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Order_Books_historical'
+  /market/options/order-book-snapshots/information:
+    get:
+      summary: 'Order books - Snapshots Information'
+      description: Retrieves the list of all the available exchanges, supported instruments and time range availability.
+      operationId: getSnapshotsInformation
+      tags:
+        - Options
+      parameters:
+        - name: exchange
+          in: query
+          description: The exchange(s) for which to retrieve the most current data (comma separated). [Default] All available exchanges.
+          required: false
+          schema:
+            type: string
+            example: deribit
+        - name: includeInactive
+          in: query
+          description: If true, endpoint returns all instruments, including delisted ones.
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Array containing list of all the available exchanges, supported instruments and time range availability.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Snapshots_information'
+  /market/options/order-book-snapshots/{instrument}/historical:
+    get:
+      summary: 'Order books - Snapshots Historical'
+      description: Retrieves the historical time series order book snapshots (bid and ask) for the specified instrument and exchange(s).
+      operationId: getSnapshotsHistorical
+      tags:
+        - Options
+      parameters:
+        - name: instrument
+          in: path
+          description: The instrument for which to retrieve the requested data.
+          required: true
+          schema:
+            type: string
+            example: ETH-28JAN22-8000-C
+        - name: exchange
+          in: query
+          description: The exchange(s) for which to retrieve the requested data (comma separated). [Default] All available exchanges.
+          required: true
+          schema:
+            type: string
+            example: deribit
+        - name: startDate
+          in: query
+          description: Payload only includes data after this date (inclusive). [Formats] seconds | milliseconds | iso8601
+          required: false
+          schema:
+            type: string
+            example: "2020-09-01T01:00:00"
+        - name: endDate
+          in: query
+          description: Payload only includes data before this date (exclusive). [Formats] seconds | milliseconds | iso8601
+          required: false
+          schema:
+            type: string
+            example: "2020-09-01T01:00:00"
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Object containing historical time series order book snapshots (bid and ask) for the specified instrument and exchange(s).'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Snapshots_historical'
+  /market/options/tickers/information:
+    get:
+      summary: 'Tickers - Information'
+      description: Retrieves the list of all the available exchanges, supported instruments and time range availability.
+      operationId: getTickersInformation
+      tags:
+        - Options
+      parameters:
+        - name: exchange
+          in: query
+          description: The exchange(s) for which to retrieve the most current data (comma separated).
+          required: false
+          schema:
+            type: string
+            example: deribit
+        - name: includeInactive
+          in: query
+          description: If true, endpoint returns all instruments, including delisted ones.
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - name: includeDates
+          in: query
+          description: Include date ranges for each record.
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: exchance
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Array containing list of all the available exchanges, supported instruments and time range availability.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Tickers_information'
+  /market/options/tickers/{instrument}/latest:
+    get:
+      summary: 'Tickers - Latest'
+      description: Retrieves the latest tickers for the specified instrument and exchange(s).
+      operationId: getTickersLatest
+      tags:
+        - Options
+      parameters:
+        - name: instrument
+          in: path
+          description: The instrument for which to retrieve the most current data.
+          required: true
+          schema:
+            type: string
+            example: ETH-30SEP22-9000-P
+        - name: exchange
+          in: query
+          description: The exchange(s) for which to retrieve the most current data (comma separated).
+          required: false
+          schema:
+            type: string
+            example: deribit
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: exchance
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Array containing latest tickers for the specified instrument and exchange(s)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Tickers_latest'
+  /market/options/tickers/{instrument}/historical:
+    get:
+      summary: 'Tickers - Historical'
+      description: Retrieves the historical time series tickers for the specified instrument and exchange(s).
+      operationId: getTickersHistorical
+      tags:
+        - Options
+      parameters:
+        - name: instrument
+          in: path
+          description: The instrument for which to retrieve the requested data.
+          required: true
+          schema:
+            type: string
+            example: BTC-30SEP22-120000-C
+        - name: exchange
+          in: query
+          description: The exchange(s) for which to retrieve the requested data (comma separated).
+          required: false
+          schema:
+            type: string
+            example: deribit
+        - name: startDate
+          in: query
+          description: Payload only includes data after this date (inclusive). [Defaults] Beginning of the current hour (max time range is 1 hour). [Formats] seconds | milliseconds | iso8601
+          required: false
+          schema:
+            type: string
+            example: "2020-09-01T01:00:00"
+        - name: endDate
+          in: query
+          description: Payload only includes data before this date (exclusive). [Defaults] One hour after the beginning of the current hour (max time range is 1 hour). [Formats] seconds | milliseconds | iso8601
+          required: false
+          schema:
+            type: string
+            example: "2020-09-01T01:00:00"
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: exchance
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Object containing historical time series tickers for the specified instrument and exchange(s)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Tickers_historical'
+  /market/options/trades/information:
+    get:
+      summary: 'Trades - Information'
+      description: Retrieves the list of all the available exchanges, supported instruments and time range availability.
+      operationId: getTradesInformation
+      tags:
+        - Options
+      parameters:
+        - name: exchange
+          in: query
+          description: The exchange(s) for which to retrieve the requested data (comma separated).
+          required: false
+          schema:
+            type: string
+            example: deribit
+        - name: includeInactive
+          in: query
+          description: If true, endpoint returns all instruments, including delisted ones.
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - name: includeDates
+          in: query
+          description: Include date ranges for each record.
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: exchance
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Array containing list of all the available exchanges, supported instruments and time range availability.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Trades_information'
+  /market/options/trades/{instrument}/historical:
+    get:
+      summary: 'Trades - Historical'
+      description: Retrieves the list of all the available exchanges, supported instruments and time range availability.
+      operationId: getTradesHistorical
+      tags:
+        - Options
+      parameters:
+        - name: instrument
+          in: path
+          description: The instrument for which to retrieve the requested data.
+          required: true
+          schema:
+            type: string
+            example: ETH-30SEP22-9000-P
+        - name: exchange
+          in: query
+          description: The exchange(s) for which to retrieve the requested data (comma separated).
+          required: true
+          schema:
+            type: string
+            example: deribit
+        - name: startDate
+          in: query
+          description: Payload only includes data after this date (inclusive). [Defaults] Beginning of the current hour (max time range is 1 hour). [Formats] seconds | milliseconds | iso8601
+          required: false
+          schema:
+            type: string
+            example: "2020-09-01T01:00:00"
+        - name: endDate
+          in: query
+          description: Payload only includes data before this date (exclusive). [Defaults] One hour after the beginning of the current hour (max time range is 1 hour). [Formats] seconds | milliseconds | iso8601
+          required: false
+          schema:
+            type: string
+            example: "2020-09-01T01:00:00"
+        - name: format
+          in: query
+          description: Format of the return payload.
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv; [Defaults] All available fields (see return payload for a list of available fields).
+          required: false
+          schema:
+            type: string
+            example: timestamp
+        - name: timeFormat
+          in: query
+          description: Time format of the timestamps in the return payload. [Defaults] milliseconds | ms* | iso | iso8601 | hr | human_readable
+          required: false
+          schema:
+            type: string
+            example: ms
+      responses:
+        '200':
+          description: 'Object containing list of all the available exchanges, supported instruments and time range availability.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Options_Trades_historical'
 components:
   schemas:
     All_Symbol_prices:
@@ -20105,5 +21231,844 @@ components:
            "timeInForce": "IOC"
            }
          ]
+    Options_Exchanges_info:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+           type: object
+           example: {
+         "deribit": {
+         "BTC-10DEC21-58000-P": {
+        "open_interest": {
+          "startDate": "2021-11-18 16:53:00 000",
+          "endDate": "2021-12-03 17:32:00 000"
+        },
+        "liquidation_order": {
+          "startDate": "2021-12-03 16:56:35 102",
+          "endDate": "2021-12-03 16:56:35 102"
+        },
+        "ohlcv": {
+          "startDate": "2021-11-18 14:30:00 000",
+          "endDate": "2021-12-03 17:55:00 000"
+        },
+        "order_book_event": {
+          "startDate": null,
+          "endDate": null
+        },
+        "order_book_snapshot": {
+          "startDate": "2021-11-18 08:04:00 000",
+          "endDate": "2021-12-03 17:56:00 000"
+        },
+        "ticker": {
+          "startDate": "2021-11-18 08:04:17 583",
+          "endDate": "2021-12-03 17:56:40 916"
+        },
+        "trade": {
+          "startDate": "2021-11-18 13:36:59 263",
+          "endDate": "2021-12-03 13:45:14 337"
+        }
+        },
+        "ETH-31DEC21-6500-P": {
+        "open_interest": {
+          "startDate": "2021-11-16 07:04:00 000",
+          "endDate": "2021-12-03 17:32:00 000"
+        },
+        "liquidation_order": {
+          "startDate": null,
+          "endDate": null
+        },
+        "ohlcv": {
+          "startDate": "2021-11-26 23:28:00 000",
+          "endDate": "2021-12-03 17:55:00 000"
+        },
+        "order_book_event": {
+          "startDate": null,
+          "endDate": null
+        },
+        "order_book_snapshot": {
+          "startDate": "2021-11-17 15:24:00 000",
+          "endDate": "2021-12-03 17:56:00 000"
+        },
+        "ticker": {
+          "startDate": "2021-11-17 10:38:46 409",
+          "endDate": "2021-12-03 17:56:40 881"
+        },
+        "trade": {
+          "startDate": "2021-11-26 23:28:27 263",
+          "endDate": "2021-11-26 23:28:27 263"
+        }
+        },
+        ...
+        },
+        ...
+        }
+    Options_Exchanges_reference:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+           type: object
+           example: {
+         "deribit": {
+         "BTC-10DEC21-100000-C": {
+         "contractType": "weekly",
+         "precision_price": 0.0005,
+         "precision_amount": 0.1,
+         "limits_price_min": 0.0005,
+         "limits_amount_min": 0.1,
+         "underlying": "BTC-10DEC21",
+         "expiration": "2021-12-10 08:00:00",
+         "nativeInstrument": "BTC-10DEC21-100000-C",
+         "quoteAsset": "BTC"
+         },
+         ...
+         },
+         ...
+         }
+    Options_Liquidations_info:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+           type: array
+           items: 
+             type: object
+           example: [
+         {
+         "exchange": "deribit",
+         "instrument": "BTC-30SEP22-80000-C",
+         "underlying": "BTC-30SEP22",
+         "startDate": "2021-11-18T00:00:00.000Z",
+         "endDate": "2021-11-26T00:00:00.000Z"
+         },
+         {...}
+         ]
+    Options_Liquidations_latest:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+           type: array
+           items: 
+             type: object
+           example: [
+         {
+          "exchange": "deribit",
+          "timestamp": "2021-11-18T16:24:31.842Z",
+          "originalQuantity": 5,
+          "price": 0.1165,
+          "side": "SELL",
+          "status": null,
+          "type": null,
+          "timeInForce": null,
+          "action": null,
+          "orderId": "ETH-102871296",
+          }
+         ]
+    Options_Liquidations_historical:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: object
+          example: {
+         "metadata": {
+         "startDate": "2020-11-25 03:22:40 544",
+         "endDate": "2021-11-26 03:22:40 544"
+        },
+         "data": [
+        {
+         "exchange": "deribit",
+         "timestamp": "2021-11-18 16:24:31 842",
+         "originalQuantity": 5,
+         "price": 0.1165,
+         "side": "SELL",
+         "status": null,
+         "type": null,
+         "timeInForce": null,
+         "action": null,
+         "orderId": "ETH-102871296",
+        },
+         {...}
+         ]
+         }
+    Options_OHLCV_information:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: array
+          items:
+            type: object
+          example: [
+            { "exchange": "deribit",
+              "instrument": "BTC-10DEC21-100000-C",
+              "underlying": "BTC-10DEC21",
+              "startDate": 1637193600000,
+              "endDate": 1638230400000
+            },
+         ]
+    Options_OHLCV_latest:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: array
+          items:
+            type: object
+            example: [
+                {
+                 "exchange": "deribit",
+                 "timestamp": "2021-11-30 08:36:00 000",
+                 "open": 0.0005,
+                 "high": 0.0005,
+                 "low": 0.0005,
+                 "close": 0.0005,
+                 "volume": 0
+                 }
+             ]
+    Options_OHLCV_historical:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: object
+          example: {
+          "metadata": {
+              "startDate": "2021-11-29T00:00:00.000Z",
+              "endDate": "2021-11-30T00:00:00.000Z"
+              },
+          "data": [
+             { "exchange": "deribit",
+               "timestamp": "2021-11-29 08:36:00 000",
+               "open": 0.0005,
+               "high": 0.0005,
+               "low": 0.0005,
+               "close": 0.0005,
+               "volume": 0
+             },
+             {...}
+           ]
+          }
+    Options_Open_Interest_info:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: array
+          items:
+            type: object
+          example: [
+         {
+          "exchange": "deribit",
+          "instrument": "BTC-10DEC21-100000-C",
+          "startDate": 1637193600000,
+          "endDate": 1637539200000
+         },
+         {...}
+         ]
+    Options_Open_Interest_latest:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: array
+          items:
+            type: object
+          example: [
+           {
+            "exchange": "deribit",
+            "timestamp": 1637600400000,
+            "value": 82
+           }
+         ]
+    Options_Open_Interest_historical:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: object 
+          example: {
+         "metadata": {
+            "startDate": 1605978878454,
+            "endDate": 1637601278454
+         },
+         "data": [
+            {
+                "exchange": "deribit",
+                "timestamp": 1637193600000,
+                "value": 31.5
+            },
+            {
+                "exchange": "deribit",
+                "timestamp": 1637280000000,
+                "value": 50.4
+            },
+            {
+                "exchange": "deribit",
+                "timestamp": 1637366400000,
+                "value": 50.4
+            },
+            {
+                "exchange": "deribit",
+                "timestamp": 1637452800000,
+                "value": 79.5
+            },
+            {
+                "exchange": "deribit",
+                "timestamp": 1637539200000,
+                "value": 82
+            }
+         ]
+         }
+    Options_Order_Books_information:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: array
+          items:
+            type: object
+          example: [
+         {
+          "exchange": "deribit",
+          "instrument": "BTC-30SEP22-80000-C",
+          "underlying": "BTC-30SEP22",
+          "startDate": "2021-11-18T00:00:00.000Z",
+          "endDate": "2021-11-26T00:00:00.000Z"
+          },
+          {...}
+         ]
+    Options_Order_Books_historical:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: object
+          example: {
+         "metadata": {
+         "columns": ["exchange", "timestamp", "timestampNanoseconds", "isBid", "data", "sequence"],
+         "startDate": "2021-11-18 06:00:00",
+         "endDate": "2021-11-18 07:00:00"
+        },
+        "data": [
+        [
+        "deribit",
+        "2021-11-18 06:03:00",
+        0,
+        false,
+        [
+          [11800.76, 1.011, 0],
+          [11800.96, 1.013, 0],
+          [11801,    0.3,   0],
+          [11854.61, 0,     0]
+        ],
+        null
+      ],
+      [
+        "deribit",
+        "2021-11-18 06:03:00",
+        0,
+        true,
+        [
+          [11821.2,  0,     0],
+          [11821.21, 1.006, 0]
+        ],
+        null
+       ]
+      
+      ]
+      }
+    Options_Snapshots_information:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: array
+          items:
+            type: object
+          example: [
+         {
+         "exchange": "deribit",
+         "instrument": "BTC-10DEC21-100000-C",
+         "startDate": 1637193600000,
+         "endDate": 1637539200000
+         },
+         {...}
+         ]
+    Options_Snapshots_historical:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: object
+          example: {
+         "metadata": {
+         "columns": [
+        "exchange",
+        "timestamp",
+        "timestampNanoseconds",
+        "underlyingPrice",
+        "underlyingIndex",
+        "stats",
+        "state",
+        "openInterest",
+        "minPrice",
+        "maxPrice",
+        "markPrice",
+        "markIv",
+        "lastPrice",
+        "interestRate",
+        "indexPrice",
+        "greeks",
+        "estimatedDeliveryPrice",
+        "bids",
+        "bidIv",
+        "bestBidPrice",
+        "bestBidAmount",
+        "bestAskPrice",
+        "bestAskAmount",
+        "asks",
+        "askIv",
+        "sequence",
+        "metadata"
+        ],
+        "startDate": "2020-08-17 06:00:00",
+        "endDate": "2020-08-17 07:00:00"
+        },
+        "data": [
+        [
+        "deribit",
+        "2021-12-01 09:19:01 254",
+        0,
+        4797.14,
+        "ETH-28JAN22",
+        {
+          "low": 0.024,
+          "high": 0.03,
+          "volume": 1131,
+          "price_change": 25
+        },
+        "open",
+        4365,
+        0.0065,
+        0.089,
+        0.030323,
+        106.88,
+        0.03,
+        0,
+        4725.08,
+        {
+          "rho": 0.99955,
+          "vega": 4.68046,
+          "delta": 0.16158,
+          "gamma": 0.00012,
+          "theta": -4.31661
+        },
+        4725.08,
+        [
+          [0.0295, 455],
+          [0.029, 252],
+          [0.0285, 140],
+          [0.027, 420],
+          [0.02, 5],
+          [0.015, 1],
+          [0.0105, 3],
+          [0.01, 1 ],
+          [0.007, 10],
+          [0.0045, 8],
+          [0.002, 1]
+        ],
+        106.03,
+        0.0295,
+        455,
+        0.031,
+        15,
+        [
+          [0.031, 15],
+          [0.0315, 138],
+          [0.032, 413],
+          [0.0325, 248],
+          [0.033, 420],
+          [0.0355, 5],
+          [0.037, 1],
+          [0.04, 2],
+          [0.06, 6],
+          [0.7, 4]
+         ],
+         107.57,
+         17235771415,
+         null
+         ],
+         ...
+         ]
+         }
+    Options_Tickers_information:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: array
+          items:
+            type: object
+          example: [
+         {
+          "exchange": "deribit",
+          "instrument": "BTC-30SEP22-80000-C",
+          "underlying": "BTC-30SEP22",
+          "startDate": "2021-11-18T00:00:00.000Z",
+          "endDate": "2021-11-26T00:00:00.000Z"
+         },
+         {...}
+         ]
+    Options_Tickers_latest:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: array
+          items:
+            type: object
+          example: [
+            { 
+            "exchange": "deribit",
+            "timestamp": "2021-11-26 03:33:18 547",
+            "bid": 0.01,
+            "ask": 1.09,
+            "mid": 0.55,
+            "last": 1.1,
+            "baseVolume": 0,
+            "quoteVolume": 0,
+            "bidVolume": 1,
+            "askVolume": 1,
+            "sequence": null,
+            "metadata": null,
+            "underlyingPrice": "4889.28",
+            "underlyingIndex": "ETH-30SEP22",
+            "stats": {
+                "low": 1.1,
+                "high": 1.1,
+                "volume": 1,
+                "price_change": 0
+            },
+            "state": "open",
+            "settlementPrice": 1.12,
+            "openInterest": 10,
+            "minPrice": 0.928,
+            "maxPrice": 1.248,
+            "markPrice": 1.063279,
+            "markIv": 112.14,
+            "interestRate": 0,
+            "indexPrice": 4460.8,
+            "greeks": {
+                "rho": -65.80318,
+                "vega": 17.87013,
+                "delta": -0.53068,
+                "gamma": 0.00008,
+                "theta": -3.2511
+            },
+            "estimatedDeliveryPrice": 4460.8,
+            "bidIv": 0,
+            "askIv": 119.43
+              }
+          ]
+    Options_Tickers_historical:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: object 
+          example: {
+            "metadata": {
+              "startDate": "2021-11-26 07:12:53 793",
+              "endDate": "2021-11-26 08:12:53 793"
+            },
+            "data": [
+            {   "exchange": "deribit",
+                "timestamp": "2021-11-26 07:12:53 982",
+                "bid": 0.01,
+                "ask": 1.09,
+                "mid": 0.55,
+                "last": 1.1,
+                "baseVolume": 0,
+                "quoteVolume": 0,
+                "bidVolume": 1,
+                "askVolume": 1,
+                "sequence": null,
+                "metadata": null,
+                "underlyingPrice": "4832.55",
+                "underlyingIndex": "ETH-30SEP22",
+                "stats": {
+                    "low": 1.1,
+                    "high": 1.1,
+                    "volume": 1,
+                    "price_change": 0
+                },
+                "state": "open",
+                "settlementPrice": 1.12,
+                "openInterest": 10,
+                "minPrice": 0.9475,
+                "maxPrice": 1.27,
+                "markPrice": 1.083826,
+                "markIv": 112.65,
+                "interestRate": 0,
+                "indexPrice": 4411.2,
+                "greeks": {
+                    "rho": -65.94924,
+                    "vega": 17.64924,
+                    "delta": -0.53325,
+                    "gamma": 0.00008,
+                    "theta": -3.22729
+                },
+                "estimatedDeliveryPrice": 4411.2,
+                "bidIv": 0,
+                "askIv": 114.34
+            },
+            ...
+            ]
+          }
+    Options_Trades_information:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: array
+          items:
+            type: object 
+          example: [
+              {"exchange": "deribit",
+               "instrument": "BTC-10DEC21-100000-C",
+               "underlying": "BTC-10DEC21",
+               "startDate": "2021-11-18T00:00:00.000Z",
+               "endDate": "2021-11-26T00:00:00.000Z"
+              },
+              {"exchange": "deribit",
+               "instrument": "BTC-10DEC21-100000-P",
+               "underlying": "BTC-10DEC21",
+               "startDate": null,
+               "endDate": null
+              },
+              ...
+          ]
+    Options_Trades_historical:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 200
+        title:
+          type: string
+          example: "OK"
+        description:
+          type: string
+          example: "Successful request"
+        payload: 
+          type: object 
+          example: {
+              "metadata": {
+                  "columns": [
+                      "exchange",
+                      "timestamp",
+                      "timestampNanoseconds",
+                      "isBid",
+                      "price",
+                      "volume",
+                      "tradeId"
+                    ],
+                "startDate": "2021-11-26 09:00:00 000",
+                "endDate": "2021-11-26 09:01:00 000"
+              }, 
+              "data": [
+                  ["deribit",
+                   "2021-11-26 09:11:02 453",
+                   0,
+                   false,
+                   0.0285,
+                   1.7000000000000002,
+                   "191829317"
+                   ],
+                   ["deribit",
+                    "2021-11-26 09:12:22 286",
+                    0,
+                    true,
+                    0.029,
+                    2.1,
+                    "191829762"
+                    ],
+              ]
+          }
     
 
