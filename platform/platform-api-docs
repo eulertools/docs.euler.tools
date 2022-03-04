@@ -23,53 +23,6 @@ tags:
   - name: Explorers
   - name: App
 paths:
-  /prices:
-    get:
-      summary: 'All symbols prices'
-      description: Latest prices of all symbols.
-      operationId: getAllPrices
-      tags:
-        - Tokens
-      parameters:
-        - name: tickers
-          in: query
-          description: The symbols to retrieve the prices for.
-          required: false
-          allowReserved: true
-          schema:
-            type: array
-            items:
-              type: string
-              example: bnb, bake
-      responses:
-        '200':
-          description: 'Object containing prices for all symbols'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/All_Symbol_prices'
-  /prices/BTC:
-    get:
-      summary: 'Single price'
-      description: Latest price of specific symbol.
-      operationId: getSpecificPrice
-      tags:
-        - Tokens
-      parameters:
-        - name: quotec
-          in: query
-          description: Currency to quote the price.
-          required: false
-          schema:
-            type: string
-            example: EUR
-      responses:
-        '200':
-          description: 'Object containing latest price of specific symbol.'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Single_Symbol_price'
   /tokens/{hash}/holders/latest:
     get:
       summary: 'Holders-Latest'
@@ -12058,49 +12011,6 @@ paths:
                 $ref: '#/components/schemas/Options_Trades_historical'
 components:
   schemas:
-    All_Symbol_prices:
-      type: object
-      properties:
-        "status":
-          type: integer
-          format: int64
-          example: 200
-        "title":
-          type: string
-          example: "ok"
-        "description":
-          type: string
-          example: "Successful request"
-        "payload":
-          type: object
-          example: {
-         "prices": {
-            "bnb": 600.4667435686863,
-            "cake": 12.52,
-            },
-         "timestamp": 12312131231
-        }
-    Single_Symbol_price:
-      type: object
-      properties:
-        "status":
-          type: integer
-          format: int64
-          example: 200
-        "title":
-          type: string
-          example: "ok"
-        "description":
-          type: string
-          example: "Successful request"
-        "payload":
-          type: object
-          example: {
-           "prices": {
-           "btc": 54735.41073774246,
-        },
-        "timestamp": 12312131231
-        }
     holder_latest:
       type: object
       properties:
