@@ -12008,7 +12008,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Options_Trades_historical'
+                $ref: '#/components/schemas/Options_Trades_historical'  
+  /tokens:
+    post:
+      summary: 'All Tokens'
+      operationId: getAllTokens
+      description: 'Returns all tokens available in the network,currently, BNB and Ethereum are the availables networks.'
+      tags:
+        - Tokens
+      responses:
+        '200':
+          description: 'Object containing all tokens available.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tokens'            
 components:
   schemas:
     holder_latest:
@@ -19568,5 +19582,409 @@ components:
                     ],
               ]
           }
+    tokens:
+      type: object
+      properties:
+        "total":
+           type: object
+           example: {
+           "value": 544,
+           "relation": "eq"
+        }
+        "max_score": 
+           type: string
+           format: nullable
+           example: null
+        "hits":
+          type: array
+          items: 
+            type: object
+            example: [
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+            "_score": null,
+            "_source": {
+                "price_usd": 375.369914827909,
+                "price_changes": {
+                    "day_priceusd": 0,
+                    "week_priceusd": 0,
+                    "hour_priceusd": 0,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+                "symbol": "WBNB",
+                "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+                "market_cap": 3738152342.147282,
+                "name": "Wrapped BNB"
+            },
+            "sort": [
+                1646656850000,
+                3738152342
+            ]
+        },
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0x843D4a358471547f51534e3e51fae91cb4Dc3F28",
+            "_score": null,
+            "_source": {
+                "price_usd": 0.000045074851923121,
+                "price_changes": {
+                    "day_priceusd": 6422676429.804539,
+                    "week_priceusd": 6428180367.255179,
+                    "hour_priceusd": 6422676429.804539,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0x843D4a358471547f51534e3e51fae91cb4Dc3F28",
+                "symbol": "lowb",
+                "address": "0x843D4a358471547f51534e3e51fae91cb4Dc3F28",
+                "market_cap": 3125393.6875748727,
+                "name": "loser coin"
+            },
+            "sort": [
+                1646656847000,
+                3125393
+            ]
+        },
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0x4BD17003473389A42DAF6a0a729f6Fdb328BbBd7",
+            "_score": null,
+            "_source": {
+                "price_usd": 0.9062615406126265,
+                "price_changes": {
+                    "day_priceusd": 341777.3555536457,
+                    "week_priceusd": 362636.9842195405,
+                    "hour_priceusd": 719336725026.8403,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0x4BD17003473389A42DAF6a0a729f6Fdb328BbBd7",
+                "symbol": "VAI",
+                "address": "0x4BD17003473389A42DAF6a0a729f6Fdb328BbBd7",
+                "market_cap": 186862725.67453542,
+                "name": "VAI Stablecoin"
+            },
+            "sort": [
+                1646656841000,
+                186862725
+            ]
+        },
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0xd32d01A43c869EdcD1117C640fBDcfCFD97d9d65",
+            "_score": null,
+            "_source": {
+                "price_usd": 1.4056718519664113,
+                "price_changes": {
+                    "day_priceusd": 286635.9618700099,
+                    "week_priceusd": 0,
+                    "hour_priceusd": 286635.9618700099,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0xd32d01A43c869EdcD1117C640fBDcfCFD97d9d65",
+                "symbol": "NMX",
+                "address": "0xd32d01A43c869EdcD1117C640fBDcfCFD97d9d65",
+                "market_cap": 32869335.380848803,
+                "name": "Nominex"
+            },
+            "sort": [
+                1646656835000,
+                32869335
+            ]
+        },
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+            "_score": null,
+            "_source": {
+                "price_usd": 6.097153460217973,
+                "price_changes": {
+                    "day_priceusd": 28550.003003947266,
+                    "week_priceusd": 28426.907919303652,
+                    "hour_priceusd": 57248.766309145445,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+                "symbol": "Cake",
+                "address": "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+                "market_cap": 5539410351.396955,
+                "name": "PancakeSwap Token"
+            },
+            "sort": [
+                1646656832000,
+                5539410351
+            ]
+        },
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0x762539b45A1dCcE3D36d080F74d1AED37844b878",
+            "_score": null,
+            "_source": {
+                "price_usd": 0.017700269575519057,
+                "price_changes": {
+                    "day_priceusd": 5944295027.15391,
+                    "week_priceusd": 7316430.311742028,
+                    "hour_priceusd": 8195576.7026345,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0x762539b45A1dCcE3D36d080F74d1AED37844b878",
+                "symbol": "LINA",
+                "address": "0x762539b45A1dCcE3D36d080F74d1AED37844b878",
+                "market_cap": 361516707.3955287,
+                "name": "Linear Token"
+            },
+            "sort": [
+                1646656814000,
+                361516707
+            ]
+        },
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+            "_score": null,
+            "_source": {
+                "price_usd": 38545.222743909726,
+                "price_changes": {
+                    "day_priceusd": 6.5671297651871745,
+                    "week_priceusd": 6.888346250409315,
+                    "hour_priceusd": 6.5671297651871745,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+                "symbol": "BTCB",
+                "address": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+                "market_cap": 4411657721.332781,
+                "name": "BTCB Token"
+            },
+            "sort": [
+                1646656811000,
+                4411657721
+            ]
+        },
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63",
+            "_score": null,
+            "_source": {
+                "price_usd": 8.668263915121397,
+                "price_changes": {
+                    "day_priceusd": 18819.891527791086,
+                    "week_priceusd": 20580.198796291013,
+                    "hour_priceusd": 2226901.39971336,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63",
+                "symbol": "XVS",
+                "address": "0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63",
+                "market_cap": 499909156.1012144,
+                "name": "Venus"
+            },
+            "sort": [
+                1646656757000,
+                499909156
+            ]
+        },
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0x8b303d5BbfBbf46F1a4d9741E491e06986894e18",
+            "_score": null,
+            "_source": {
+                "price_usd": 0.11196208422487211,
+                "price_changes": {
+                    "day_priceusd": 1493927.590991633,
+                    "week_priceusd": 1582612.7044410168,
+                    "hour_priceusd": 1493927.590991633,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0x8b303d5BbfBbf46F1a4d9741E491e06986894e18",
+                "symbol": "WOOP",
+                "address": "0x8b303d5BbfBbf46F1a4d9741E491e06986894e18",
+                "market_cap": 238472883.3841733,
+                "name": "Woonkly Power"
+            },
+            "sort": [
+                1646656745000,
+                238472883
+            ]
+        },
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0x07663837218A003e66310a01596af4bf4e44623D",
+            "_score": null,
+            "_source": {
+                "price_usd": 0.9679946171467149,
+                "price_changes": {
+                    "day_priceusd": 300202.4462712145,
+                    "week_priceusd": 336042.3348807344,
+                    "hour_priceusd": 300202.4462712145,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0x07663837218A003e66310a01596af4bf4e44623D",
+                "symbol": "rUSD",
+                "address": "0x07663837218A003e66310a01596af4bf4e44623D",
+                "market_cap": 5155732.57904765,
+                "name": "rUSD"
+            },
+            "sort": [
+                1646656739000,
+                5155732
+            ]
+        },
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0x8263CD1601FE73C066bf49cc09841f35348e3be0",
+            "_score": null,
+            "_source": {
+                "price_usd": 0.0625923000836591,
+                "price_changes": {
+                    "day_priceusd": 1975488.928008739,
+                    "week_priceusd": 2261028.0192403095,
+                    "hour_priceusd": 1975488.928008739,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0x8263CD1601FE73C066bf49cc09841f35348e3be0",
+                "symbol": "ALU",
+                "address": "0x8263CD1601FE73C066bf49cc09841f35348e3be0",
+                "market_cap": 190588143.16472295,
+                "name": "Altura"
+            },
+            "sort": [
+                1646656730000,
+                190588143
+            ]
+        },
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE",
+            "_score": null,
+            "_source": {
+                "price_usd": 0.7457753414454305,
+                "price_changes": {
+                    "day_priceusd": 388265.56194602733,
+                    "week_priceusd": 413732.77842778567,
+                    "hour_priceusd": 388265.56194602733,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE",
+                "symbol": "XRP",
+                "address": "0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE",
+                "market_cap": 165349174.51206073,
+                "name": "XRP Token"
+            },
+            "sort": [
+                1646656724000,
+                165349174
+            ]
+        },
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0x6a6Ccf15B38DA4b5B0eF4C8fe9FefCB472A893F9",
+            "_score": null,
+            "_source": {
+                "price_usd": 0.028302578413210842,
+                "price_changes": {
+                    "day_priceusd": 1791360130.5009696,
+                    "week_priceusd": 434252.5754215748,
+                    "hour_priceusd": 2337754.0318121426,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0x6a6Ccf15B38DA4b5B0eF4C8fe9FefCB472A893F9",
+                "symbol": "MNST",
+                "address": "0x6a6Ccf15B38DA4b5B0eF4C8fe9FefCB472A893F9",
+                "market_cap": 24735802.195460457,
+                "name": "MoonStarter.net"
+            },
+            "sort": [
+                1646656712000,
+                24735802
+            ]
+        },
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0x603c7f932ED1fc6575303D8Fb018fDCBb0f39a95",
+            "_score": null,
+            "_source": {
+                "price_usd": 0.3184991068507596,
+                "price_changes": {
+                    "day_priceusd": 280377.7913010387,
+                    "week_priceusd": 268215.04874161625,
+                    "hour_priceusd": 1.836896776847402e+23,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0x603c7f932ED1fc6575303D8Fb018fDCBb0f39a95",
+                "symbol": "BANANA",
+                "address": "0x603c7f932ED1fc6575303D8Fb018fDCBb0f39a95",
+                "market_cap": 71191492.86335154,
+                "name": "ApeSwapFinance Banana"
+            },
+            "sort": [
+                1646656703000,
+                71191492
+            ]
+        },
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47",
+            "_score": null,
+            "_source": {
+                "price_usd": 0.8255735666298606,
+                "price_changes": {
+                    "day_priceusd": 257529.4178484101,
+                    "week_priceusd": 244375.96201464027,
+                    "hour_priceusd": 70999602.91419426,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47",
+                "symbol": "ADA",
+                "address": "0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47",
+                "market_cap": 373502034.83095956,
+                "name": "Cardano Token"
+            },
+            "sort": [
+                1646656700000,
+                373502034
+            ]
+        },
+        {
+            "_index": "catalog_20210721",
+            "_type": "_doc",
+            "_id": "bsc~token~0x3920123482070C1a2dff73AaD695c60e7c6F6862",
+            "_score": null,
+            "_source": {
+                "price_usd": 0.0520164681268798,
+                "price_changes": {
+                    "day_priceusd": 3913432.8687983695,
+                    "week_priceusd": 3494010.936860167,
+                    "hour_priceusd": 3913432.8687983695,
+                    "month_priceusd": 0
+                },
+                "identifier": "bsc~token~0x3920123482070C1a2dff73AaD695c60e7c6F6862",
+                "symbol": "EULER",
+                "address": "0x3920123482070C1a2dff73AaD695c60e7c6F6862",
+                "market_cap": 8658388.24917174,
+                "name": "Euler.Tools"
+            },
+            "sort": [
+                1646656700000,
+                8658388
+            ]
+        }
+    ]
+    
     
 
