@@ -12087,7 +12087,1065 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/pairs'       
+                $ref: '#/components/schemas/pairs'  
+  /markets:
+    get:
+      summary: 'Markets'
+      operationId: getMarkets
+      description: 'Retrieves all markets available'
+      tags:
+        - Markets
+      parameters:
+        - name: vs_currency
+          in: query
+          description: 'Currency'
+          required: true
+          schema:
+            type: string
+            example: "usd"
+        - name: order
+          in: query
+          description: 'Order'
+          required: true
+          schema:
+            type: string
+            example: "market_cap_desc"
+        - name: per_page
+          in: query
+          description: 'Items per page'
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 16
+        - name: page
+          in: query
+          description: 'Page'
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - name: sparkline
+          in: query
+          description: 'sparkline'
+          required: true
+          schema:
+            type: boolean
+            example: false
+        - name: price_change_percentage
+          in: query
+          description: 'Price'
+          required: true
+          schema:
+            type: string
+            example: "24h,7d"
+      responses:
+        '200':
+          description: 'Array containing markets information'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/markets' 
+  /token_proposal:
+    get:
+      summary: 'Token'
+      description: "Retrieves a token proposal"
+      operationId: getTokenProposal
+      tags:
+        - Explorers
+      parameters:
+        - name: address
+          in: query
+          description: "The token address for the proposal"
+          required: true
+          schema:
+            type: string
+            example: "0xdBaAa36B347d56b77Ce0e36f050fCeEBbF9fbc38"
+      responses:
+        '200':
+          description: 'Object containing detailed token proposal information'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/explorers_token'
+  /pair_proposal:
+    get:
+      summary: 'Pair'
+      description: "Returns an individual pair proposal"
+      operationId: getPairProposal
+      tags:
+        - Explorers
+      parameters:
+        - name: address
+          in: query
+          description: "The pair address for the proposal"
+          required: true
+          schema:
+            type: string
+            example: "0xc2Eed0F5a0dc28cfa895084bC0a9B8B8279aE492"
+      responses:
+        '200':
+          description: 'Object containing pair proposal'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/explorers_pair'
+  /tokens_proposals:
+    get:
+      summary: 'Tokens'
+      description: "Returns all tokens proposals"
+      operationId: getAllTokensProposals
+      tags:
+        - Explorers
+      parameters:
+        - name: total
+          in: query
+          description: "Total number of tokens proposals"
+          required: false
+          schema:
+            type: integer
+            format: int32
+            example: 3
+        - name: limit
+          in: query
+          description: "The limit to retrieve data"
+          required: false
+          schema:
+            type: integer
+            format: int32
+            example: 20
+        - name: skip
+          in: query
+          description: "The number of skipped results"
+          required: false
+          schema:
+            type: integer
+            format: int32
+            example: 0
+      responses:
+        '200':
+          description: 'Array containing all tokens proposals'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/explorers_tokens'
+  /pairs_proposals:
+    get:
+      summary: 'Pairs'
+      description: "Retrieves all pairs proposals"
+      operationId: getAllPairs
+      tags:
+        - Explorers
+      parameters:
+        - name: total
+          in: query
+          description: "Total number of pairs proposals"
+          required: false
+          schema:
+            type: integer
+            format: int32
+            example: 3
+        - name: limit
+          in: query
+          description: "The limit to retrieve data"
+          required: false
+          schema:
+            type: integer
+            format: int32
+            example: 20
+        - name: skip
+          in: query
+          description: "The number of skipped results"
+          required: false
+          schema:
+            type: integer
+            format: int32
+            example: 0
+      responses:
+        '200':
+          description: 'Array containing all pairs proposals'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/explorers_pairs'
+  /marketplace/{identifier}:
+    get:
+      summary: 'Single Sale'
+      description: Returns details of a single sale given an identifier.
+      operationId: getSingleSale
+      tags:
+        - Marketplace
+      parameters:
+        - name: identifier
+          in: path
+          description: "ID"
+          required: true
+          schema:
+            type: string
+            example: "121"
+      responses:
+        '200':
+          description: 'Object containing details of a single sale given an identifier'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/singular_sale'
+  /subscription_settings:
+    get:
+      summary: 'Subscriptions'
+      description: Returns all subscription tiers
+      operationId: getSubscriptions
+      tags:
+        - Subscriptions
+      responses:
+        '200':
+          description: 'Array containing subscription settings'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscriptions'
+  /profiles/me:
+    get:
+      summary: 'Profiles'
+      description: Returns account details.
+      operationId: getProfiles
+      tags:
+        - Subscriptions
+      responses:
+        '200':
+          description: 'Object containing account information'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profiles'
+  /farms:
+    get:
+      summary: 'Farms'
+      description: Returns all farms.
+      operationId: getFarms
+      tags:
+        - Farms
+      responses:
+        '200':
+          description: 'Object containing farms information'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farms'
+  /portfolios:
+    post:
+      summary: 'Creates a new portfolio'
+      description: Creates a new portfolio.
+      operationId: createPortfolios
+      tags:
+        - Portfolios
+      parameters:
+        - name: origin
+          in: header
+          description: "Server"
+          required: true
+          schema:
+            type: string
+            example: https://euler.tools
+        - name: sec-fetch-site
+          in: header
+          description: "Site"
+          required: true
+          schema:
+            type: string
+            example: same-site
+        - name: sec-fetch-mode
+          in: header
+          description: "Mode"
+          required: true
+          schema:
+            type: string
+            example: cors
+        - name: referer
+          in: header
+          description: "Referer"
+          required: true
+          schema:
+            type: string
+            example: https://euler.tools/
+        - name: accept-language
+          in: header
+          description: "Language"
+          required: true
+          schema:
+            type: string
+            example: es-ES,es;q=0.9
+      responses:
+        '201':
+          description: 'Object containing information of a new portfolio'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Portfolios'
+    get:
+      summary: 'Get portfolios'
+      description: Retrieves portfolios of a account user.
+      operationId: getPortfolios
+      tags:
+        - Portfolios
+      parameters:
+        - name: origin
+          in: header
+          description: "Server"
+          required: true
+          schema:
+            type: string
+            example: https://euler.tools
+        - name: sec-fetch-site
+          in: header
+          description: "Site"
+          required: true
+          schema:
+            type: string
+            example: same-site
+        - name: sec-fetch-mode
+          in: header
+          description: "Mode"
+          required: true
+          schema:
+            type: string
+            example: cors
+        - name: referer
+          in: header
+          description: "Referer"
+          required: true
+          schema:
+            type: string
+            example: https://euler.tools/
+        - name: accept-language
+          in: header
+          description: "Language"
+          required: true
+          schema:
+            type: string
+            example: es-ES,es;q=0.9
+        - name: authorization
+          in: header
+          description: "Bearer token"
+          required: true
+          schema:
+            type: string
+            example: eyJraWQiOiI5TU9ScXNlMDhhY1N0S25KVXFTV1RZc0hIMUhnWlJ2ZFRkM3k5eFlEZ1wvMD0iLC
+      responses:
+        '200':
+          description: 'Object containing portfolios of a account user'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get_portfolios'
+  /wallets:
+    post:
+      summary: 'Creates a wallet'
+      description: Creates a new wallet.
+      operationId: createWallet
+      tags:
+        - Wallets
+      parameters:
+        - name: authority
+          in: header
+          description: "Domain"
+          required: true
+          schema:
+            type: string
+            example: bsc.catalog.prod.euler.tools
+        - name: accept
+          in: header
+          description: "Accepted formats"
+          required: true
+          schema:
+            type: string
+            example: "application/json, text/plain, */*"
+        - name: content-type
+          in: header
+          description: "Type"
+          required: true
+          schema:
+            type: string
+            example: application/json
+        - name: origin
+          in: header
+          description: "Server"
+          required: true
+          schema:
+            type: string
+            example: https://euler.tools
+        - name: sec-fetch-site
+          in: header
+          description: "Site"
+          required: true
+          schema:
+            type: string
+            example: same-site
+        - name: sec-fetch-dest
+          in: header
+          description: "sec-fetch-site"
+          required: true
+          schema:
+            type: string
+            example: empty
+        - name: referer
+          in: header
+          description: "Referer"
+          required: true
+          schema:
+            type: string
+            example: https://euler.tools/
+      responses:
+        '200':
+          description: 'Object containing details of a new wallet'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/wallets'
+    get:
+      summary: 'Get wallets'
+      description: Returns wallet information given a wallet address.
+      operationId: getWallet
+      tags:
+        - Wallets
+      responses:
+        '200':
+          description: 'Array containing wallets details'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wallet'
+  /wallets/{id}:
+    delete:
+      summary: 'Deletes a wallet'
+      description: Deletes a wallet.
+      operationId: deleteWallet
+      tags:
+        - Wallets
+      parameters:
+        - name: id
+          in: path
+          description: "identifier"
+          required: true
+          schema:
+            type: string
+            example: ba4b79ea-541e-4612-93ce-fd0994f171e1
+        - name: authority
+          in: header
+          description: "Domain"
+          required: true
+          schema:
+            type: string
+            example: bsc.catalog.prod.euler.tools
+        - name: accept
+          in: header
+          description: "Accepted formats"
+          required: true
+          schema:
+            type: string
+            example: "application/json, text/plain, */*"
+        - name: content-type
+          in: header
+          description: "Type"
+          required: true
+          schema:
+            type: string
+            example: application/json
+        - name: origin
+          in: header
+          description: "Server"
+          required: true
+          schema:
+            type: string
+            example: https://euler.tools
+        - name: sec-fetch-site
+          in: header
+          description: "Site"
+          required: true
+          schema:
+            type: string
+            example: same-site
+        - name: sec-fetch-dest
+          in: header
+          description: "sec-fetch-site"
+          required: true
+          schema:
+            type: string
+            example: empty
+        - name: referer
+          in: header
+          description: "Referer"
+          required: true
+          schema:
+            type: string
+            example: https://euler.tools/
+      responses:
+        '200':
+          description: 'Object with metadata information'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/wallet_delete'
+    put:
+      summary: 'Updates a wallet'
+      description: Updates a wallet.
+      operationId: updatesWallet
+      tags:
+        - Wallets
+      parameters:
+        - name: id
+          in: path
+          description: "Wallet identifier"
+          required: true
+          schema:
+            type: string
+            example: "43e82635-de5e-4441-858d-4be09b9e66a1"
+        - name: authority
+          in: header
+          description: "Domain"
+          required: true
+          schema:
+            type: string
+            example: "bsc.catalog.prod.euler.tools"
+        - name: content-type
+          in: header
+          description: "Type"
+          required: true
+          schema:
+            type: string
+            example: "application/json"
+        - name: origin
+          in: header
+          description: "Server"
+          required: true
+          schema:
+            type: string
+            example: "https://euler.tools"
+        - name: sec-fetch-site
+          in: header
+          description: "Site"
+          required: true
+          schema:
+            type: string
+            example: "same-site"
+        - name: sec-fetch-dest
+          in: header
+          description: "fetch"
+          required: true
+          schema:
+            type: string
+            example: "empty"
+        - name: referer
+          in: header
+          description: "Referer"
+          required: true
+          schema:
+            type: string
+            example: "https://euler.tools/"
+        - name: accept-language
+          in: header
+          description: ""
+          required: true
+          schema:
+            type: string
+            example: "es-ES,es;q=0.9"
+      responses:
+        '200':
+          description: 'Object with updated wallet deatils'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/wallet_update'
+  /trades:
+    get:
+      summary: 'Trades'
+      operationId: getTrades
+      description: 'Returns all trades of a specific token'
+      tags:
+        - App
+      parameters:
+        - name: address
+          in: query
+          description: "The address to retrieve trade information"
+          required: true
+          schema:
+            type: string
+            example: "0x31045e7023e6c388f9447e632a3f9eaff90393fa"
+        - name: $sort[block_timestamp]
+          in: query
+          description: "Sort"
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: -1
+        - name: $limit
+          in: query
+          description: "Limit"
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 10
+        - name: $skip
+          in: query
+          description: "Skip"
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 0
+        - name: block_timestamp[$gte]
+          in: query
+          description: "timestamp"
+          required: true
+          schema:
+            type: string
+            example: "2021-10-01T03:00:00.000Z"
+        - name: block_timestamp[$lte]
+          in: query
+          description: "timestamp"
+          required: true
+          schema:
+            type: string
+            example: "2021-12-31T03:00:00.000Z"
+        - name: volume[$gte]
+          in: query
+          description: "Volume"
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 0
+      responses:
+        '200':
+          description: 'Array containig all trades information'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/App_trades'
+  /portfolios/{id}:
+    put:
+      summary: 'Updates a portfolio'
+      description: Updates a portfolio.
+      operationId: updatePortfolio
+      tags:
+        - Portfolios
+      parameters:
+        - name: id
+          in: path
+          description: "Portfolio identifier"
+          required: true
+          schema:
+            type: string
+            example: "43e82635-de5e-4441-858d-4be09b9e66a1"
+        - name: authority
+          in: header
+          description: "Domain"
+          required: true
+          schema:
+            type: string
+            example: "bsc.catalog.prod.euler.tools"
+        - name: accept
+          in: header
+          description: "Accepted formats"
+          required: true
+          schema:
+            type: string
+            example: "application/json, text/plain, */*"
+        - name: content-type
+          in: header
+          description: "Type"
+          required: true
+          schema:
+            type: string
+            example: "application/json"
+        - name: origin
+          in: header
+          description: "Server"
+          required: true
+          schema:
+            type: string
+            example: "https://euler.tools"
+        - name: sec-fetch-site
+          in: header
+          description: "Site"
+          required: true
+          schema:
+            type: string
+            example: "same-site"
+        - name: sec-fetch-dest
+          in: header
+          description: "fetch"
+          required: true
+          schema:
+            type: string
+            example: "empty"
+        - name: referer
+          in: header
+          description: "Referer"
+          required: true
+          schema:
+            type: string
+            example: "https://euler.tools/"
+        - name: accept-language
+          in: header
+          description: ""
+          required: true
+          schema:
+            type: string
+            example: "es-ES,es;q=0.9"
+      responses:
+        '200':
+          description: 'Object with updates details of a specific portfolio.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/portfolios_update'
+    delete:
+      summary: 'Deletes a portfolio'
+      description: Deletes a portfolio.
+      operationId: deletePortfolio
+      tags:
+        - Portfolios
+      parameters:
+        - name: id
+          in: path
+          description: "Portfolio id"
+          required: true
+          schema:
+            type: string
+            example: "43e82635-de5e-4441-858d-4be09b9e66a1"
+        - name: authority
+          in: header
+          description: "Domain"
+          required: true
+          schema:
+            type: string
+            example: "bsc.catalog.prod.euler.tools"
+        - name: accept
+          in: header
+          description: "Accepted formats"
+          required: true
+          schema:
+            type: string
+            example: "application/json, text/plain, */*"
+        - name: origin
+          in: header
+          description: "Server"
+          required: true
+          schema:
+            type: string
+            example: "https://euler.tools"
+        - name: sec-fetch-site
+          in: header
+          description: "Site"
+          required: true
+          schema:
+            type: string
+            example: "same-site"
+        - name: sec-fetch-dest
+          in: header
+          description: "fetch"
+          required: true
+          schema:
+            type: string
+            example: "empty"
+        - name: referer
+          in: header
+          description: "Referer"
+          required: true
+          schema:
+            type: string
+            example: "https://euler.tools/"
+        - name: accept-language
+          in: header
+          description: ""
+          required: true
+          schema:
+            type: string
+            example: "es-ES,es;q=0.9"
+      responses:
+        '200':
+          description: 'Object with metadata information'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/portfolios_delete'
+  /prices/{hash}:
+    get:
+      summary: 'Token Prices - Latest'
+      description: Retrieves the latest price (and other market information) for the specified token.
+      operationId: getLatestPrices
+      tags:
+        - Prices
+      parameters:
+        - name: hash
+          in: path
+          description: The address of the token for which to retrieve the price.
+          required: true
+          schema:
+            type: string
+            example: "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2"
+        - name: currency
+          in: query
+          description: The additional currency (other than ETH and USD) for which to return price info.
+          required: true
+          schema:
+            type: string
+            example: EUR
+        - name: format
+          in: query
+          description:  Format of the return payload. [Defaults] csv | json*
+          required: false
+          schema:
+            type: string
+            example: csv
+        - name: fields
+          in: query
+          description: List of fields to include in the return payload - can only be used in combination with option format=csv.
+          required: false
+          schema:
+            type: string
+            example: timestamp
+      responses:
+        '200':
+          description: 'Array containing latest price for the specified token.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/token_prices_latest'
+  /prices:
+    get:
+      summary: 'Prices'
+      description: Returns prices for all tokens.
+      operationId: getPrices
+      tags:
+        - Prices
+      parameters:
+        - name: tickers
+          in: query
+          description: The symbols to retrieve the prices for.
+          required: false
+          allowReserved: true
+          schema:
+            type: array
+            items:
+              type: string
+              example: bnb, bake
+      responses:
+        '200':
+          description: 'Object containing prices for all tokens'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/All_prices'
+  /marketplace:
+    post:
+      summary: 'Search Sales'
+      description: Returns all sales in the network.
+      operationId: getSales
+      tags:
+        - Marketplace
+      parameters:
+        - name: User-Agent
+          in: header
+          description: "User-Agent"
+          required: true
+          schema:
+            type: string
+            example: Mozilla/5.0 (X11; Linux x86_64; rv:97.0) Gecko/20100101 Firefox/97.0 
+        - name: Accept
+          in: header
+          description: "Accepted formats"
+          required: true
+          schema:
+            type: string
+            example: "application/json, text/plain, */*"
+        - name: Accept-Language
+          in: header
+          description: "Language"
+          required: true
+          schema:
+            type: string
+            example: es-ES,es;q=0.9
+        - name: Accept-Encoding
+          in: header
+          description: "Encoding"
+          required: true
+          schema:
+            type: string
+            example: gzip, deflate, br
+        - name: Authorization
+          in: header
+          description: "Auth"
+          required: true
+          schema:
+            type: string
+            example: 234FFnnweo$as
+        - name: Origin
+          in: header
+          description: "Server"
+          required: true
+          schema:
+            type: string
+            example: https://development.euler.tools
+        - name: Connection
+          in: header
+          description: "Connection"
+          required: true
+          schema:
+            type: string
+            example: keep-alive
+        - name: Referer
+          in: header
+          description: "Referer"
+          required: true
+          schema:
+            type: string
+            example: https://development.euler.tools/
+        - name: Sec-Fetch-Dest
+          in: header
+          description: "Dest"
+          required: true
+          schema:
+            type: string
+            example: empty
+        - name: Sec-Fetch-Mode
+          in: header
+          description: "Mode"
+          required: true
+          schema:
+            type: string
+            example: cors
+        - name: Sec-Fetch-Site
+          in: header
+          description: "Site"
+          required: true
+          schema:
+            type: string
+            example: same-site
+        - name: If-None-Match
+          in: header
+          description: "If-None-Match"
+          required: true
+          schema:
+            type: string
+            example: W/"3834-NvE892Xn4t86xhz9UBxKYB0i3qY"
+        - name: TE
+          in: header
+          description: "trailers"
+          required: true
+          schema:
+            type: string
+            example: trailers
+        - name: content-type
+          in: header
+          description: "Type"
+          required: true
+          schema:
+            type: string
+            example: application/json
+      responses:
+        '200':
+          description: 'Object containing all sales in the network'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sales'
+  /cognito:
+    post:
+      summary: 'Creates Bearer token'
+      description: Amazon Web Services request to obtain Cognito token access.
+      operationId: getBearerToken
+      tags:
+        - Portfolio
+      parameters:
+        - name: authority
+          in: header
+          description: "Provider"
+          required: true
+          schema:
+            type: string
+            example: cognito-idp.us-east-1.amazonaws.com
+        - name: cache-control
+          in: header
+          description: "Cache-control"
+          required: true
+          schema:
+            type: string
+            example: max-age=0
+        - name: x-amz-user-agent
+          in: header
+          description: "x-amz-user-agent"
+          required: true
+          schema:
+            type: string
+            example: aws-amplify/0.1.x js
+        - name: x-amz-target
+          in: header
+          description: "x-amz-target"
+          required: true
+          schema:
+            type: string
+            example: AWSCognitoIdentityProviderService.InitiateAuth
+        - name: origin
+          in: header
+          description: "Server"
+          required: true
+          schema:
+            type: string
+            example: https://euler.tools
+        - name: sec-fetch-site
+          in: header
+          description: "sec-fetch-site"
+          required: true
+          schema:
+            type: string
+            example: cross-site
+        - name: sec-fetch-mode
+          in: header
+          description: "sec-fetch-mode"
+          required: true
+          schema:
+            type: string
+            example: cors
+        - name: sec-fetch-dest
+          in: header
+          description: "sec-fetch-dest"
+          required: true
+          schema:
+            type: string
+            example: empty
+        - name: referer
+          in: header
+          description: "referer"
+          required: true
+          schema:
+            type: string
+            example: https://euler.tools/
+        - name: content-type
+          in: header
+          description: "content-type"
+          required: true
+          schema:
+            type: string
+            example: application/x-amz-json-1.1
+        - name: accept-language
+          in: header
+          description: "accept-language"
+          required: true
+          schema:
+            type: string
+            example: es-ES,es;q=0.9
+      responses:
+        '201':
+          description: 'Object containing authentication results'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cognito'
 components:
   schemas:
     holder_latest:
@@ -23218,6 +24276,79 @@ components:
             ]
         }
      ]
+    markets: 
+      type: object
+      properties:
+        payload:
+          type: array
+          items:
+            type: object
+          example: [
+            {
+             "id": "bitcoin",
+             "symbol": "btc",
+             "name": "Bitcoin",
+             "image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
+             "current_price": 46850,
+             "market_cap": 886432062145,
+             "market_cap_rank": 1,
+             "fully_diluted_valuation": 984744133379,
+             "total_volume": 29006379008,
+             "high_24h": 48365,
+             "low_24h": 45741,
+             "price_change_24h": -1320.954423621188,
+             "price_change_percentage_24h": -2.74221,
+             "market_cap_change_24h": -24591354901.458862,
+             "market_cap_change_percentage_24h": -2.69931,
+             "circulating_supply": 18903462.0,
+             "total_supply": 21000000.0,
+             "max_supply": 21000000.0,
+             "ath": 69045,
+             "ath_change_percentage": -32.08381,
+             "ath_date": "2021-11-10T14:24:11.849Z",
+             "atl": 67.81,
+             "atl_change_percentage": 69053.91435,
+             "atl_date": "2013-07-06T00:00:00.000Z",
+             "roi": null,
+             "last_updated": "2021-12-17T17:47:38.656Z",
+             "price_change_percentage_24h_in_currency": -2.7422101215602948,
+             "price_change_percentage_7d_in_currency": -2.1627808523283427
+            },
+            {
+            "id": "ethereum",
+            "symbol": "eth",
+            "name": "Ethereum",
+            "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
+            "current_price": 3869.31,
+            "market_cap": 460644566746,
+            "market_cap_rank": 2,
+            "fully_diluted_valuation": null,
+            "total_volume": 21627222083,
+            "high_24h": 4062.33,
+            "low_24h": 3713.35,
+            "price_change_24h": -179.970636469499,
+            "price_change_percentage_24h": -4.44451,
+            "market_cap_change_24h": -20345838667.25299,
+            "market_cap_change_percentage_24h": -4.22999,
+            "circulating_supply": 118778723.4365,
+            "total_supply": null,
+            "max_supply": null,
+            "ath": 4878.26,
+            "ath_change_percentage": -20.50083,
+            "ath_date": "2021-11-10T14:24:19.604Z",
+            "atl": 0.432979,
+            "atl_change_percentage": 895596.48266,
+            "atl_date": "2015-10-20T00:00:00.000Z",
+            "roi": {
+               "times": 109.48015877689825,
+               "currency": "btc",
+               "percentage": 10948.015877689826
+             },
+               "last_updated": "2021-12-17T17:47:13.483Z",
+               "price_change_percentage_24h_in_currency": -4.444512573445673,
+               "price_change_percentage_7d_in_currency": -6.838524068604988
+             },
+            ]
 
     
     
