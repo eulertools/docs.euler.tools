@@ -12022,7 +12022,58 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tokens'            
+                $ref: '#/components/schemas/tokens'
+  /tokens/{token}:
+    get:
+      summary: 'Token'
+      operationId: getToken
+      description: 'Retrieves token details given a token address'
+      tags:
+        - Tokens
+      parameters:
+        - name: token
+          in: path
+          description: 'Token address to retrieve the most current data'
+          required: true
+          schema:
+            type: string
+            example: "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c"
+        - name: fields\[\] 
+          in: query
+          description: 'Currency'
+          required: true
+          schema:
+             type: string
+             example: "price_usd"
+      responses:
+        '200':
+          description: 'Object containing most current data of a given token address'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/token' 
+  /pairs/{pair}:  
+     get:
+      summary: 'Pair'
+      operationId: getPair
+      description: 'Returns pair information given a pair address'
+      tags:
+        - Pairs
+      parameters:
+        - name: pair
+          in: path
+          description: 'Pair address to retrieve data'
+          required: true
+          schema:
+            type: string
+            example: "0xCA56457F274921bc97319bCe79e04fd7196Ef203"   
+      responses:
+        '200':
+          description: 'Object containing current data of a given pair address.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pair'            
 components:
   schemas:
     holder_latest:
@@ -19984,7 +20035,2364 @@ components:
                 8658388
             ]
         }
-    ]
+     ]
+    token:
+      type: object
+      properties:
+        "_index": 
+          type: string
+          example: "catalog_20210721"
+        "_type":
+          type: string
+          example: "_doc"
+        "_id":
+          type: string
+          example: "bsc~token~0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c"
+        "_version": 
+          type: integer
+          format: int32
+          example: 1539456,
+        "_seq_no": 
+          type: integer
+          format: int32
+          example: 52994750,
+        "_primary_term": 
+          type: integer
+          format: int32
+          example: 13,
+        "found": 
+          type: boolean
+          example: true
+        "_source": 
+          type: object
+          example: {
+        "price_usd": 44261.71361070749,
+        "identifier": "bsc~token~0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+        "symbol": "BTCB",
+        "chain": "bsc",
+        "address": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+        "total_supply": 85501,
+        "kind": "token",
+        "totalSupply": 80501,
+        "update_date": 1646226647000,
+        "price_bnb": "107.57168201466517",
+        "price_changes": {
+            "day_priceusd": 6.5671297651871745,
+            "week_priceusd": 6.888346250409315,
+            "hour_priceusd": 6.5671297651871745,
+            "month_priceusd": 0
+        },
+        "market_cap": 4411657721.332781,
+        "price": 51597.73243977007,
+        "decimals": 18,
+        "name": "BTCB Token",
+        "category": "token",
+        "readable_update_date": "2022-03-02T13:10:47.000Z",
+        "coin": {
+            "image": {
+                "small": "https://assets.coingecko.com/coins/images/14108/small/Binance-bitcoin.png?1617332330",
+                "large": "https://assets.coingecko.com/coins/images/14108/large/Binance-bitcoin.png?1617332330",
+                "thumb": "https://assets.coingecko.com/coins/images/14108/thumb/Binance-bitcoin.png?1617332330"
+            },
+            "community_data": {
+                "twitter_followers": 0,
+                "telegram_channel_user_count": null,
+                "facebook_likes": null,
+                "reddit_subscribers": 0,
+                "reddit_average_posts_48h": 0,
+                "reddit_average_comments_48h": 0,
+                "reddit_accounts_active_48h": 0
+            },
+            "coin_id": "binance-bitcoin",
+            "asset_platform_id": "binance-smart-chain",
+            "public_notice": null,
+            "description": "Pegged tokens such as BTCB, are 100% backed by the native coin in reserve, which is Bitcoin (BTC) in BTCB’s case.",
+            "tickers": [
+                {
+                    "last_fetch_at": "2021-06-21T12:22:37+00:00",
+                    "is_anomaly": false,
+                    "last": 0.060155215657155,
+                    "last_traded_at": "2021-06-21T12:22:37+00:00",
+                    "coin_id": "ethereum",
+                    "converted_volume": {
+                        "btc": 152.742,
+                        "usd": 4954003,
+                        "eth": 2524
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 2551.01721943594,
+                    "bid_ask_spread_percentage": 0.602713,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+                    "converted_last": {
+                        "btc": 0.99533949,
+                        "usd": 32283,
+                        "eth": 16.445106
+                    },
+                    "token_info_url": null,
+                    "trust_score": "green",
+                    "base": "0X2170ED0880AC9A755FD29B2688956BD959F933F8",
+                    "timestamp": "2021-06-21T12:22:37+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:03:40+00:00",
+                    "is_anomaly": false,
+                    "last": 32471.8862449659,
+                    "last_traded_at": "2021-06-21T11:03:40+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 733.733,
+                        "usd": 23913790,
+                        "eth": 12227
+                    },
+                    "target_coin_id": "binance-usd",
+                    "is_stale": false,
+                    "target": "BUSD",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 739.416390801336,
+                    "bid_ask_spread_percentage": 0.602713,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+                    "converted_last": {
+                        "btc": 0.99231304,
+                        "usd": 32341,
+                        "eth": 16.536326
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+                    "trust_score": "green",
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-21T11:03:40+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:04:45+00:00",
+                    "is_anomaly": false,
+                    "last": 0.84661944647065,
+                    "last_traded_at": "2021-06-21T12:04:45+00:00",
+                    "coin_id": "t-bitcoin",
+                    "converted_volume": {
+                        "btc": 8.475062,
+                        "usd": 274040,
+                        "eth": 139.024
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 10.1535848579999,
+                    "bid_ask_spread_percentage": 0.602724,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x2cd1075682b0fccaadd0ca629e138e64015ba11c",
+                    "converted_last": {
+                        "btc": 0.98590538,
+                        "usd": 31879,
+                        "eth": 16.17268
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x2cd1075682b0fccaadd0ca629e138e64015ba11c",
+                    "trust_score": "green",
+                    "base": "0X2CD1075682B0FCCAADD0CA629E138E64015BA11C",
+                    "timestamp": "2021-06-21T12:04:45+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:14:43+00:00",
+                    "is_anomaly": false,
+                    "last": 107.530871383849,
+                    "last_traded_at": "2021-06-21T12:14:43+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 66.287,
+                        "usd": 2151935,
+                        "eth": 1090
+                    },
+                    "target_coin_id": "binancecoin",
+                    "is_stale": false,
+                    "target": "BNB",
+                    "market": {
+                        "identifier": "bakeryswap",
+                        "name": "Bakeryswap",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 66.0998642296781,
+                    "bid_ask_spread_percentage": 0.602727,
+                    "trade_url": "https://www.bakeryswap.org/#/swap/0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+                    "converted_last": {
+                        "btc": 1.002833,
+                        "usd": 32556,
+                        "eth": 16.495942
+                    },
+                    "token_info_url": null,
+                    "trust_score": "green",
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-21T12:14:43+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:10:42+00:00",
+                    "is_anomaly": false,
+                    "last": 0.0002975226307629923,
+                    "last_traded_at": "2021-06-21T11:10:42+00:00",
+                    "coin_id": "swampy",
+                    "converted_volume": {
+                        "btc": 0.31416459,
+                        "usd": 10160.03,
+                        "eth": 5.248332
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 950.823636803543,
+                    "bid_ask_spread_percentage": 0.604262,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xc5a49b4cbe004b6fd55b30ba1de6ac360ff9765d",
+                    "converted_last": {
+                        "btc": 1.110548,
+                        "usd": 35915,
+                        "eth": 18.552454
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0xc5a49b4cbe004b6fd55b30ba1de6ac360ff9765d",
+                    "trust_score": "green",
+                    "base": "0XC5A49B4CBE004B6FD55B30BA1DE6AC360FF9765D",
+                    "timestamp": "2021-06-21T11:10:42+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:07:17+00:00",
+                    "is_anomaly": false,
+                    "last": 0.0000184949811866764,
+                    "last_traded_at": "2021-06-21T12:07:17+00:00",
+                    "coin_id": "zcore-finance",
+                    "converted_volume": {
+                        "btc": 0.10269263,
+                        "usd": 3317.47,
+                        "eth": 1.685437
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 5605.44133482507,
+                    "bid_ask_spread_percentage": 0.604694,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x0288d3e353fe2299f11ea2c2e1696b4a648ecc07",
+                    "converted_last": {
+                        "btc": 0.99054808,
+                        "usd": 32000,
+                        "eth": 16.257312
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x0288d3e353fe2299f11ea2c2e1696b4a648ecc07",
+                    "trust_score": "green",
+                    "base": "0X0288D3E353FE2299F11EA2C2E1696B4A648ECC07",
+                    "timestamp": "2021-06-21T12:07:17+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T10:54:43+00:00",
+                    "is_anomaly": false,
+                    "last": 32557.872934028732,
+                    "last_traded_at": "2021-06-21T10:54:43+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 0.35982754,
+                        "usd": 11734.46,
+                        "eth": 5.994843
+                    },
+                    "target_coin_id": "tether",
+                    "is_stale": false,
+                    "target": "USDT",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.361693069816511,
+                    "bid_ask_spread_percentage": 0.608327,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+                    "converted_last": {
+                        "btc": 0.99484222,
+                        "usd": 32443,
+                        "eth": 16.574394
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+                    "trust_score": "green",
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-21T10:54:43+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:30:52+00:00",
+                    "is_anomaly": false,
+                    "last": 107.677835045296,
+                    "last_traded_at": "2021-06-21T12:30:52+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 0.08808613,
+                        "usd": 2860.71,
+                        "eth": 1.45395
+                    },
+                    "target_coin_id": "binancecoin",
+                    "is_stale": false,
+                    "target": "BNB",
+                    "market": {
+                        "identifier": "julswap",
+                        "name": "Julswap",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.0879342784821802,
+                    "bid_ask_spread_percentage": 0.608499,
+                    "trade_url": "https://julswap.com/#/swap/0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+                    "converted_last": {
+                        "btc": 1.001727,
+                        "usd": 32532,
+                        "eth": 16.534505
+                    },
+                    "token_info_url": null,
+                    "trust_score": "green",
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-21T12:30:52+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:17:24+00:00",
+                    "is_anomaly": false,
+                    "last": 0.00000585774746151465,
+                    "last_traded_at": "2021-06-21T12:17:24+00:00",
+                    "coin_id": "icarus-finance",
+                    "converted_volume": {
+                        "btc": 0.03450922,
+                        "usd": 1119.97,
+                        "eth": 0.5692998
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 5888.93903846065,
+                    "bid_ask_spread_percentage": 0.609941,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x0ca2f09eca544b61b91d149dea2580c455c564b2",
+                    "converted_last": {
+                        "btc": 1.000386,
+                        "usd": 32467,
+                        "eth": 16.503396
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x0ca2f09eca544b61b91d149dea2580c455c564b2",
+                    "trust_score": "green",
+                    "base": "0X0CA2F09ECA544B61B91D149DEA2580C455C564B2",
+                    "timestamp": "2021-06-21T12:17:24+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:04:34+00:00",
+                    "is_anomaly": false,
+                    "last": 0.0000010343515793681254,
+                    "last_traded_at": "2021-06-21T11:04:34+00:00",
+                    "coin_id": "buckswap",
+                    "converted_volume": {
+                        "btc": 0.08627597,
+                        "usd": 2811.9,
+                        "eth": 1.437739
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 81803.9996463126,
+                    "bid_ask_spread_percentage": 0.610221,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xda28b68483c44f563168b6e4b7df9209a02ed64e",
+                    "converted_last": {
+                        "btc": 1.019641,
+                        "usd": 33232,
+                        "eth": 16.991725
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0xda28b68483c44f563168b6e4b7df9209a02ed64e",
+                    "trust_score": "green",
+                    "base": "0XDA28B68483C44F563168B6E4B7DF9209A02ED64E",
+                    "timestamp": "2021-06-21T11:04:34+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T10:50:35+00:00",
+                    "is_anomaly": false,
+                    "last": 0.0000012321755546602618,
+                    "last_traded_at": "2021-06-21T10:50:35+00:00",
+                    "coin_id": "pokeball",
+                    "converted_volume": {
+                        "btc": 0.00890367,
+                        "usd": 290.99,
+                        "eth": 0.14819125
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 6972.44742296264,
+                    "bid_ask_spread_percentage": 0.617353,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xcdad3683335a4a96d2c437dd4513b061e4aec4ff",
+                    "converted_last": {
+                        "btc": 1.036362,
+                        "usd": 33871,
+                        "eth": 17.249031
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0xcdad3683335a4a96d2c437dd4513b061e4aec4ff",
+                    "trust_score": "green",
+                    "base": "0XCDAD3683335A4A96D2C437DD4513B061E4AEC4FF",
+                    "timestamp": "2021-06-21T10:50:35+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:40:07+00:00",
+                    "is_anomaly": false,
+                    "last": 0.00000959134305243056,
+                    "last_traded_at": "2021-06-21T11:40:07+00:00",
+                    "coin_id": "eggplant-finance",
+                    "converted_volume": {
+                        "btc": 0.02235988,
+                        "usd": 717.08,
+                        "eth": 0.37300729
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 2161.39988033481,
+                    "bid_ask_spread_percentage": 0.618056,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x21adb1c644663069e83059ac3f9d9ca1133d29e4",
+                    "converted_last": {
+                        "btc": 1.078586,
+                        "usd": 34590,
+                        "eth": 17.992967
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x21adb1c644663069e83059ac3f9d9ca1133d29e4",
+                    "trust_score": "green",
+                    "base": "0X21ADB1C644663069E83059AC3F9D9CA1133D29E4",
+                    "timestamp": "2021-06-21T11:40:07+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:20:51+00:00",
+                    "is_anomaly": false,
+                    "last": 0.000420600989015227,
+                    "last_traded_at": "2021-06-21T12:20:51+00:00",
+                    "coin_id": "pancakeswap-token",
+                    "converted_volume": {
+                        "btc": 0.05191203,
+                        "usd": 1684.06,
+                        "eth": 0.85760265
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 121.030770446225,
+                    "bid_ask_spread_percentage": 0.632542,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+                    "converted_last": {
+                        "btc": 1.019769,
+                        "usd": 33082,
+                        "eth": 16.846901
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+                    "trust_score": "green",
+                    "base": "0X0E09FABB73BD3ADE0A17ECC321FD13A19E81CE82",
+                    "timestamp": "2021-06-21T12:20:51+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:23:37+00:00",
+                    "is_anomaly": false,
+                    "last": 0.00000469624999429594,
+                    "last_traded_at": "2021-06-21T12:23:37+00:00",
+                    "coin_id": "etna-network",
+                    "converted_volume": {
+                        "btc": 0.00384931,
+                        "usd": 124.87,
+                        "eth": 0.06359886
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 821.444855902286,
+                    "bid_ask_spread_percentage": 0.64225,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x51f35073ff7cf54c9e86b7042e59a8cc9709fc46",
+                    "converted_last": {
+                        "btc": 0.99782333,
+                        "usd": 32369,
+                        "eth": 16.486166
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x51f35073ff7cf54c9e86b7042e59a8cc9709fc46",
+                    "trust_score": "green",
+                    "base": "0X51F35073FF7CF54C9E86B7042E59A8CC9709FC46",
+                    "timestamp": "2021-06-21T12:23:37+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:57:25+00:00",
+                    "is_anomaly": false,
+                    "last": 0.0000010887425091912173,
+                    "last_traded_at": "2021-06-21T11:57:25+00:00",
+                    "coin_id": "syndex",
+                    "converted_volume": {
+                        "btc": 0.00369773,
+                        "usd": 119.5,
+                        "eth": 0.06068565
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 3414.70139645552,
+                    "bid_ask_spread_percentage": 0.669364,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xe2fd51755e84d01d865e869f284ae03c995f8f2c",
+                    "converted_last": {
+                        "btc": 0.99461944,
+                        "usd": 32143,
+                        "eth": 16.323305
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0xe2fd51755e84d01d865e869f284ae03c995f8f2c",
+                    "trust_score": "green",
+                    "base": "0XE2FD51755E84D01D865E869F284AE03C995F8F2C",
+                    "timestamp": "2021-06-21T11:57:25+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:57:31+00:00",
+                    "is_anomaly": false,
+                    "last": 0.0000308758628129265,
+                    "last_traded_at": "2021-06-21T11:57:31+00:00",
+                    "coin_id": "dai",
+                    "converted_volume": {
+                        "btc": 0.00426327,
+                        "usd": 137.78,
+                        "eth": 0.06996717
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 137.350241391659,
+                    "bid_ask_spread_percentage": 0.746886,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3",
+                    "converted_last": {
+                        "btc": 1.005297,
+                        "usd": 32489,
+                        "eth": 16.498549
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x6b175474e89094c44da98b954eedeac495271d0f",
+                    "trust_score": "green",
+                    "base": "0X1AF3F329E8BE154074D8769D1FFA4EE058B1DBC3",
+                    "timestamp": "2021-06-21T11:57:31+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T10:57:38+00:00",
+                    "is_anomaly": false,
+                    "last": 0.000030640341466881055,
+                    "last_traded_at": "2021-06-21T10:57:38+00:00",
+                    "coin_id": "usd-coin",
+                    "converted_volume": {
+                        "btc": 0.00358347,
+                        "usd": 116.87,
+                        "eth": 0.05969955
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 117.254571112804,
+                    "bid_ask_spread_percentage": 0.751658,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+                    "converted_last": {
+                        "btc": 0.99742431,
+                        "usd": 32531,
+                        "eth": 16.61681
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                    "trust_score": "green",
+                    "base": "0X8AC76A51CC950D9822D68B83FE1AD97B32CD580D",
+                    "timestamp": "2021-06-21T10:57:38+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:28:49+00:00",
+                    "is_anomaly": false,
+                    "last": 0.00000492174729392541,
+                    "last_traded_at": "2021-06-21T11:28:49+00:00",
+                    "coin_id": "pantherswap",
+                    "converted_volume": {
+                        "btc": 0.00025404,
+                        "usd": 8.16,
+                        "eth": 0.00424967
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 50.1372932535287,
+                    "bid_ask_spread_percentage": 0.89102,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x1f546ad641b56b86fd9dceac473d1c7a357276b7",
+                    "converted_last": {
+                        "btc": 1.029485,
+                        "usd": 33056,
+                        "eth": 17.221671
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x1f546ad641b56b86fd9dceac473d1c7a357276b7",
+                    "trust_score": "green",
+                    "base": "0X1F546AD641B56B86FD9DCEAC473D1C7A357276B7",
+                    "timestamp": "2021-06-21T11:28:49+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:17:40+00:00",
+                    "is_anomaly": false,
+                    "last": 0.000040071605768614,
+                    "last_traded_at": "2021-06-21T10:42:00+00:00",
+                    "coin_id": "binance-peg-cardano",
+                    "converted_volume": {
+                        "btc": 0.00001487,
+                        "usd": 0.486715,
+                        "eth": 0.00024744
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.371486076880544,
+                    "bid_ask_spread_percentage": 4.669882,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x3ee2200efb3400fabb9aacf31297cbdd1d435d47",
+                    "converted_last": {
+                        "btc": 0.99914724,
+                        "usd": 32696,
+                        "eth": 16.621976
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x3ee2200efb3400fabb9aacf31297cbdd1d435d47",
+                    "trust_score": "green",
+                    "base": "0X3EE2200EFB3400FABB9AACF31297CBDD1D435D47",
+                    "timestamp": "2021-06-21T10:42:00+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T10:36:46+00:00",
+                    "is_anomaly": false,
+                    "last": 0.0000307190388273627,
+                    "last_traded_at": "2021-06-21T10:36:46+00:00",
+                    "coin_id": "tether",
+                    "converted_volume": {
+                        "btc": 1310,
+                        "usd": 42857365,
+                        "eth": 21704
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "market": {
+                        "identifier": "mdex_bsc",
+                        "name": "Mdex BSC",
+                        "has_trading_incentive": true
+                    },
+                    "volume": 0,
+                    "bid_ask_spread_percentage": 0.602713,
+                    "trade_url": "https://bsc.mdex.com/#/swap?inputCurrency=0x55d398326f99059ff775485246999027b3197955&outputCurrency=0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+                    "converted_last": {
+                        "btc": 0.9822647,
+                        "usd": 32143,
+                        "eth": 16.278151
+                    },
+                    "token_info_url": null,
+                    "trust_score": "yellow",
+                    "base": "0X55D398326F99059FF775485246999027B3197955",
+                    "timestamp": "2021-06-21T10:36:46+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:48:11+00:00",
+                    "is_anomaly": false,
+                    "last": 0.0603589823955277,
+                    "last_traded_at": "2021-06-21T11:48:11+00:00",
+                    "coin_id": "ethereum",
+                    "converted_volume": {
+                        "btc": 186.29,
+                        "usd": 6009095,
+                        "eth": 3074
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "market": {
+                        "identifier": "mdex_bsc",
+                        "name": "Mdex BSC",
+                        "has_trading_incentive": true
+                    },
+                    "volume": 0,
+                    "bid_ask_spread_percentage": 0.602714,
+                    "trade_url": "https://bsc.mdex.com/#/swap?inputCurrency=0x2170ed0880ac9a755fd29b2688956bd959f933f8&outputCurrency=0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+                    "converted_last": {
+                        "btc": 0.96256281,
+                        "usd": 31049,
+                        "eth": 15.883785
+                    },
+                    "token_info_url": null,
+                    "trust_score": "yellow",
+                    "base": "0X2170ED0880AC9A755FD29B2688956BD959F933F8",
+                    "timestamp": "2021-06-21T11:48:11+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:12:26+00:00",
+                    "is_anomaly": false,
+                    "last": 107.253995262677,
+                    "last_traded_at": "2021-06-21T12:12:26+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 6.809414,
+                        "usd": 221052,
+                        "eth": 111.881
+                    },
+                    "target_coin_id": "binancecoin",
+                    "is_stale": false,
+                    "target": "BNB",
+                    "market": {
+                        "identifier": "apeswap",
+                        "name": "ApeSwap",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 6.80770677338501,
+                    "bid_ask_spread_percentage": 0.602893,
+                    "trade_url": "https://dex.apeswap.finance/#/swap/0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+                    "converted_last": {
+                        "btc": 1.000251,
+                        "usd": 32471,
+                        "eth": 16.434535
+                    },
+                    "token_info_url": null,
+                    "trust_score": "yellow",
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-21T12:12:26+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:11:09+00:00",
+                    "is_anomaly": false,
+                    "last": 107.842175042902,
+                    "last_traded_at": "2021-06-21T12:11:09+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 0.05453313,
+                        "usd": 1769.85,
+                        "eth": 0.8960019
+                    },
+                    "target_coin_id": "wbnb",
+                    "is_stale": false,
+                    "target": "0XBB4CDB9CBD36B01BD1CBAEBF2DE08D9173BC095C",
+                    "market": {
+                        "identifier": "pinkswap",
+                        "name": "PinkSwap",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0,
+                    "bid_ask_spread_percentage": 0.609557,
+                    "trade_url": "https://exchange.pinkswap.finance/#/swap?inputCurrency=0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c&outputCurrency=0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+                    "converted_last": {
+                        "btc": 1.005736,
+                        "usd": 32641,
+                        "eth": 16.524662
+                    },
+                    "token_info_url": null,
+                    "trust_score": "yellow",
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-21T12:11:09+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:11:51+00:00",
+                    "is_anomaly": false,
+                    "last": 32064.1775126045,
+                    "last_traded_at": "2021-06-21T11:48:54+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 0.02940748,
+                        "usd": 948.59,
+                        "eth": 0.48526911
+                    },
+                    "target_coin_id": "binance-usd",
+                    "is_stale": false,
+                    "target": "BUSD",
+                    "market": {
+                        "identifier": "value_liquid_bsc",
+                        "name": "vSwap BSC",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.0291976622588663,
+                    "bid_ask_spread_percentage": 0.654875,
+                    "trade_url": "https://bsc.valuedefi.io/#/vswap",
+                    "converted_last": {
+                        "btc": 1.007186,
+                        "usd": 32488,
+                        "eth": 16.620136
+                    },
+                    "token_info_url": null,
+                    "trust_score": "yellow",
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-21T11:48:54+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:28:48+00:00",
+                    "is_anomaly": false,
+                    "last": 0.0000012058494676462615,
+                    "last_traded_at": "2021-06-21T09:55:21+00:00",
+                    "coin_id": "dekbox",
+                    "converted_volume": {
+                        "btc": 0.00289484,
+                        "usd": 96.24,
+                        "eth": 0.04759499
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 2398.64254892003,
+                    "bid_ask_spread_percentage": 0.895674,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xe52c5a3590952f3ed6fccf89a0bd7f38e11c5b98",
+                    "converted_last": {
+                        "btc": 1.000842,
+                        "usd": 33275,
+                        "eth": 16.45518
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0xe52c5a3590952f3ed6fccf89a0bd7f38e11c5b98",
+                    "trust_score": "yellow",
+                    "base": "0XE52C5A3590952F3ED6FCCF89A0BD7F38E11C5B98",
+                    "timestamp": "2021-06-21T09:55:21+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:41:47+00:00",
+                    "is_anomaly": false,
+                    "last": 1.6744559782905917e-13,
+                    "last_traded_at": "2021-06-21T11:41:47+00:00",
+                    "coin_id": "feg-token-bsc",
+                    "converted_volume": {
+                        "btc": 0.00961504,
+                        "usd": 308.52,
+                        "eth": 0.1603904
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 53542561793.2168,
+                    "bid_ask_spread_percentage": 0.918545,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xacfc95585d80ab62f67a14c566c1b7a49fe91167",
+                    "converted_last": {
+                        "btc": 1.072452,
+                        "usd": 34412,
+                        "eth": 17.8898
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0xacfc95585d80ab62f67a14c566c1b7a49fe91167",
+                    "trust_score": "yellow",
+                    "base": "0XACFC95585D80AB62F67A14C566C1B7A49FE91167",
+                    "timestamp": "2021-06-21T11:41:47+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:47:23+00:00",
+                    "is_anomaly": false,
+                    "last": 3.4058189146928886e-15,
+                    "last_traded_at": "2021-06-21T11:47:23+00:00",
+                    "coin_id": "tardigrades-finance",
+                    "converted_volume": {
+                        "btc": 0.00400329,
+                        "usd": 128.38,
+                        "eth": 0.06625832
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 1018952356626.54,
+                    "bid_ask_spread_percentage": 1.215058,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x92a42db88ed0f02c71d439e55962ca7cab0168b5",
+                    "converted_last": {
+                        "btc": 1.153563,
+                        "usd": 36993,
+                        "eth": 19.092596
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x92a42db88ed0f02c71d439e55962ca7cab0168b5",
+                    "trust_score": "yellow",
+                    "base": "0X92A42DB88ED0F02C71D439E55962CA7CAB0168B5",
+                    "timestamp": "2021-06-21T11:47:23+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:48:11+00:00",
+                    "is_anomaly": false,
+                    "last": 853168.360914886,
+                    "last_traded_at": "2021-06-21T11:48:11+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 0.00162396,
+                        "usd": 52.38,
+                        "eth": 0.02679789
+                    },
+                    "target_coin_id": "dekbox",
+                    "is_stale": false,
+                    "target": "0XE52C5A3590952F3ED6FCCF89A0BD7F38E11C5B98",
+                    "market": {
+                        "identifier": "mdex_bsc",
+                        "name": "Mdex BSC",
+                        "has_trading_incentive": true
+                    },
+                    "volume": 0,
+                    "bid_ask_spread_percentage": 1.451688,
+                    "trade_url": "https://bsc.mdex.com/#/swap?inputCurrency=0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c&outputCurrency=0xe52c5a3590952f3ed6fccf89a0bd7f38e11c5b98",
+                    "converted_last": {
+                        "btc": 1.034487,
+                        "usd": 33369,
+                        "eth": 17.070641
+                    },
+                    "token_info_url": null,
+                    "trust_score": "yellow",
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-21T11:48:11+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:24:33+00:00",
+                    "is_anomaly": false,
+                    "last": 0.000001752480291868576,
+                    "last_traded_at": "2021-06-21T08:43:40+00:00",
+                    "coin_id": "marshmellowdefi",
+                    "converted_volume": {
+                        "btc": 0.00002858,
+                        "usd": 0.948704,
+                        "eth": 0.00046843
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 16.2471220833249,
+                    "bid_ask_spread_percentage": 1.446858,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x787732f27d18495494cea3792ed7946bbcff8db2",
+                    "converted_last": {
+                        "btc": 1.003793,
+                        "usd": 33320,
+                        "eth": 16.451703
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x787732f27d18495494cea3792ed7946bbcff8db2",
+                    "trust_score": "yellow",
+                    "base": "0X787732F27D18495494CEA3792ED7946BBCFF8DB2",
+                    "timestamp": "2021-06-21T08:43:40+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T10:59:35+00:00",
+                    "is_anomaly": false,
+                    "last": 1.37498037320176e-12,
+                    "last_traded_at": "2021-06-21T10:59:35+00:00",
+                    "coin_id": "gmr-finance",
+                    "converted_volume": {
+                        "btc": 0.00000221,
+                        "usd": 0.072167,
+                        "eth": 0.00003685
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 1510536.02095032,
+                    "bid_ask_spread_percentage": 5.044731,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x0523215dcafbf4e4aa92117d13c6985a3bef27d7",
+                    "converted_last": {
+                        "btc": 1.065312,
+                        "usd": 34746,
+                        "eth": 17.741962
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x0523215dcafbf4e4aa92117d13c6985a3bef27d7",
+                    "trust_score": "yellow",
+                    "base": "0X0523215DCAFBF4E4AA92117D13C6985A3BEF27D7",
+                    "timestamp": "2021-06-21T10:59:35+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:25:54+00:00",
+                    "is_anomaly": false,
+                    "last": 0.0000265139651960857,
+                    "last_traded_at": "2021-06-21T12:25:54+00:00",
+                    "coin_id": "vai",
+                    "converted_volume": {
+                        "btc": 0.0000156,
+                        "usd": 0.506085,
+                        "eth": 0.00025773
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.567992798693012,
+                    "bid_ask_spread_percentage": 11.411059,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x4bd17003473389a42daf6a0a729f6fdb328bbbd7",
+                    "converted_last": {
+                        "btc": 1.035833,
+                        "usd": 33605,
+                        "eth": 17.114076
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x4bd17003473389a42daf6a0a729f6fdb328bbbd7",
+                    "trust_score": "yellow",
+                    "base": "0X4BD17003473389A42DAF6A0A729F6FDB328BBBD7",
+                    "timestamp": "2021-06-21T12:25:54+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T10:49:47+00:00",
+                    "is_anomaly": false,
+                    "last": 0.0000303732947198029,
+                    "last_traded_at": "2021-06-21T10:49:47+00:00",
+                    "coin_id": "wrapped-ust-bsc",
+                    "converted_volume": {
+                        "btc": 0.0000236,
+                        "usd": 0.77115,
+                        "eth": 0.00039275
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.774033727314873,
+                    "bid_ask_spread_percentage": 16.403963,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x23396cf899ca06c4472205fc903bdb4de249d6fc",
+                    "converted_last": {
+                        "btc": 1.003636,
+                        "usd": 32801,
+                        "eth": 16.705535
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x23396cf899ca06c4472205fc903bdb4de249d6fc",
+                    "trust_score": "yellow",
+                    "base": "0X23396CF899CA06C4472205FC903BDB4DE249D6FC",
+                    "timestamp": "2021-06-21T10:49:47+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:00:44+00:00",
+                    "is_anomaly": false,
+                    "last": 0.0000211566138308692,
+                    "last_traded_at": "2021-06-21T05:37:22+00:00",
+                    "coin_id": "binance-peg-xrp",
+                    "converted_volume": {
+                        "btc": 2.08837e-7,
+                        "usd": 0.00714128,
+                        "eth": 0.00000339
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.0100000000002183,
+                    "bid_ask_spread_percentage": 29.785687,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe",
+                    "converted_last": {
+                        "btc": 0.98709952,
+                        "usd": 33754,
+                        "eth": 16.017396
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe",
+                    "trust_score": "red",
+                    "base": "0X1D2F0DA169CEB9FC7B3144628DB156F3F6C60DBE",
+                    "timestamp": "2021-06-21T05:37:22+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:24:23+00:00",
+                    "is_anomaly": false,
+                    "last": 1.384209901427653e-18,
+                    "last_traded_at": "2021-06-21T10:45:50+00:00",
+                    "coin_id": "gocerberus",
+                    "converted_volume": {
+                        "btc": 0.00000999,
+                        "usd": 0.326529,
+                        "eth": 0.00016621
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 7596161891295,
+                    "bid_ask_spread_percentage": 35.13772,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x8b3268a23131dafbd77165690767f285c1aac6c5",
+                    "converted_last": {
+                        "btc": 0.95026257,
+                        "usd": 31055,
+                        "eth": 15.807422
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x8b3268a23131dafbd77165690767f285c1aac6c5",
+                    "trust_score": "red",
+                    "base": "0X8B3268A23131DAFBD77165690767F285C1AAC6C5",
+                    "timestamp": "2021-06-21T10:45:50+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T10:59:24+00:00",
+                    "is_anomaly": false,
+                    "last": 0.000007709979147282506,
+                    "last_traded_at": "2021-06-21T10:59:24+00:00",
+                    "coin_id": "binance-peg-dogecoin",
+                    "converted_volume": {
+                        "btc": 0.00000261,
+                        "usd": 0.085146,
+                        "eth": 0.00004348
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.341626960000212,
+                    "bid_ask_spread_percentage": 39.830179,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xba2ae424d960c26247dd6c32edc70b295c744c43",
+                    "converted_last": {
+                        "btc": 0.99112012,
+                        "usd": 32327,
+                        "eth": 16.506355
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0xba2ae424d960c26247dd6c32edc70b295c744c43",
+                    "trust_score": "red",
+                    "base": "0XBA2AE424D960C26247DD6C32EDC70B295C744C43",
+                    "timestamp": "2021-06-21T10:59:24+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:23:38+00:00",
+                    "is_anomaly": false,
+                    "last": 5.46419100995269e-10,
+                    "last_traded_at": "2021-06-21T12:23:38+00:00",
+                    "coin_id": "footballstars",
+                    "converted_volume": {
+                        "btc": 1.33e-10,
+                        "usd": 0.00000433,
+                        "eth": 2.203e-9
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.257559106612462,
+                    "bid_ask_spread_percentage": -200.719216,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x6507458bb53aec6be863161641ec28739c41cc97",
+                    "converted_last": {
+                        "btc": 0.94747607,
+                        "usd": 30736,
+                        "eth": 15.654322
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x6507458bb53aec6be863161641ec28739c41cc97",
+                    "trust_score": "red",
+                    "base": "0X6507458BB53AEC6BE863161641EC28739C41CC97",
+                    "timestamp": "2021-06-21T12:23:38+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:48:12+00:00",
+                    "is_anomaly": false,
+                    "last": 32372.0515348252,
+                    "last_traded_at": "2021-06-21T11:48:12+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 96.133,
+                        "usd": 3100927,
+                        "eth": 1586
+                    },
+                    "target_coin_id": "binance-usd",
+                    "is_stale": false,
+                    "target": "0XE9E7CEA3DEDCA5984780BAFC599BD69ADD087D56",
+                    "market": {
+                        "identifier": "mdex_bsc",
+                        "name": "Mdex BSC",
+                        "has_trading_incentive": true
+                    },
+                    "volume": 0,
+                    "bid_ask_spread_percentage": 0.602744,
+                    "trade_url": "https://bsc.mdex.com/#/swap?inputCurrency=0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c&outputCurrency=0xe9e7cea3dedca5984780bafc599bd69add087d56",
+                    "converted_last": {
+                        "btc": 1.016857,
+                        "usd": 32800,
+                        "eth": 16.779719
+                    },
+                    "token_info_url": null,
+                    "trust_score": null,
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-21T11:48:12+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:48:11+00:00",
+                    "is_anomaly": false,
+                    "last": 17965.3919639322,
+                    "last_traded_at": "2021-06-21T11:48:11+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 86.914,
+                        "usd": 2803564,
+                        "eth": 1434
+                    },
+                    "target_coin_id": "mdex",
+                    "is_stale": false,
+                    "target": "0X9C65AB58D8D978DB963E63F2BFB7121627E3A739",
+                    "market": {
+                        "identifier": "mdex_bsc",
+                        "name": "Mdex BSC",
+                        "has_trading_incentive": true
+                    },
+                    "volume": 0,
+                    "bid_ask_spread_percentage": 0.60282,
+                    "trade_url": "https://bsc.mdex.com/#/swap?inputCurrency=0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c&outputCurrency=0x9c65ab58d8d978db963e63f2bfb7121627e3a739",
+                    "converted_last": {
+                        "btc": 0.98896156,
+                        "usd": 31901,
+                        "eth": 16.319405
+                    },
+                    "token_info_url": null,
+                    "trust_score": null,
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-21T11:48:11+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T10:59:42+00:00",
+                    "is_anomaly": false,
+                    "last": 5.5190231206174214e-15,
+                    "last_traded_at": "2021-06-21T06:18:42+00:00",
+                    "coin_id": "upshib",
+                    "converted_volume": {
+                        "btc": 2.2e-11,
+                        "usd": 7.56329e-7,
+                        "eth": 3.53e-10
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 8310.72358244658,
+                    "bid_ask_spread_percentage": -200.442474,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x795d38678d5a3f7ad80dded5e27644e9c0352904",
+                    "converted_last": {
+                        "btc": 0.47672805,
+                        "usd": 16489.59,
+                        "eth": 7.686611
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x795d38678d5a3f7ad80dded5e27644e9c0352904",
+                    "trust_score": null,
+                    "base": "0X795D38678D5A3F7AD80DDED5E27644E9C0352904",
+                    "timestamp": "2021-06-21T06:18:42+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:06:12+00:00",
+                    "is_anomaly": false,
+                    "last": 0.0005309862916165646,
+                    "last_traded_at": "2021-06-21T07:24:46+00:00",
+                    "coin_id": "belt",
+                    "converted_volume": {
+                        "btc": 2.459e-9,
+                        "usd": 0.00008103,
+                        "eth": 3.9783e-8
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.00000464506638087059,
+                    "bid_ask_spread_percentage": -210.516926,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xe0e514c71282b6f4e823703a39374cf58dc3ea4f",
+                    "converted_last": {
+                        "btc": 0.99684427,
+                        "usd": 32853,
+                        "eth": 16.129418
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0xe0e514c71282b6f4e823703a39374cf58dc3ea4f",
+                    "trust_score": null,
+                    "base": "0XE0E514C71282B6F4E823703A39374CF58DC3EA4F",
+                    "timestamp": "2021-06-21T07:24:46+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:23:41+00:00",
+                    "is_anomaly": false,
+                    "last": 32366.38575794265,
+                    "last_traded_at": "2021-06-21T12:23:41+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 370.654,
+                        "usd": 12023999,
+                        "eth": 6124
+                    },
+                    "target_coin_id": "binance-usd",
+                    "is_stale": false,
+                    "target": "BUSD",
+                    "market": {
+                        "identifier": "wault_swap",
+                        "name": "WaultSwap",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 369.89409031153735,
+                    "bid_ask_spread_percentage": null,
+                    "trade_url": "https://swap.wault.finance/#/swap",
+                    "converted_last": {
+                        "btc": 1.002055,
+                        "usd": 32507,
+                        "eth": 16.556087
+                    },
+                    "token_info_url": null,
+                    "trust_score": null,
+                    "base": "BTCB",
+                    "timestamp": "2021-06-21T12:23:41+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:23:40+00:00",
+                    "is_anomaly": false,
+                    "last": 0.00003093539712742599,
+                    "last_traded_at": "2021-06-21T12:23:40+00:00",
+                    "coin_id": "tether",
+                    "converted_volume": {
+                        "btc": 145.065,
+                        "usd": 4705898,
+                        "eth": 2397
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "wault_swap",
+                        "name": "WaultSwap",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 4675191.3103111265,
+                    "bid_ask_spread_percentage": null,
+                    "trade_url": "https://swap.wault.finance/#/swap",
+                    "converted_last": {
+                        "btc": 1.003015,
+                        "usd": 32538,
+                        "eth": 16.571949
+                    },
+                    "token_info_url": null,
+                    "trust_score": null,
+                    "base": "USDT",
+                    "timestamp": "2021-06-21T12:23:40+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:23:18+00:00",
+                    "is_anomaly": false,
+                    "last": 32528.689868418733,
+                    "last_traded_at": "2021-06-21T12:23:18+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 109.147,
+                        "usd": 3540732,
+                        "eth": 1803
+                    },
+                    "target_coin_id": "binance-usd",
+                    "is_stale": false,
+                    "target": "BUSD",
+                    "market": {
+                        "identifier": "dodo_bsc",
+                        "name": "Dodo BSC",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 108.38,
+                    "bid_ask_spread_percentage": null,
+                    "trade_url": null,
+                    "converted_last": {
+                        "btc": 1.00708,
+                        "usd": 32670,
+                        "eth": 16.639109
+                    },
+                    "token_info_url": null,
+                    "trust_score": null,
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-21T12:23:18+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:23:37+00:00",
+                    "is_anomaly": false,
+                    "last": 0.06006887187023513,
+                    "last_traded_at": "2021-06-21T12:23:37+00:00",
+                    "coin_id": "ethereum",
+                    "converted_volume": {
+                        "btc": 48.859436,
+                        "usd": 1584997,
+                        "eth": 807.262
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "wault_swap",
+                        "name": "WaultSwap",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 817.933308134328,
+                    "bid_ask_spread_percentage": null,
+                    "trade_url": "https://swap.wault.finance/#/swap",
+                    "converted_last": {
+                        "btc": 0.99444572,
+                        "usd": 32260,
+                        "eth": 16.430361
+                    },
+                    "token_info_url": null,
+                    "trust_score": null,
+                    "base": "ETH",
+                    "timestamp": "2021-06-21T12:23:37+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:23:39+00:00",
+                    "is_anomaly": false,
+                    "last": 107.75709882341573,
+                    "last_traded_at": "2021-06-21T12:23:39+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 32.456567,
+                        "usd": 1052889,
+                        "eth": 536.252
+                    },
+                    "target_coin_id": "wbnb",
+                    "is_stale": false,
+                    "target": "WBNB",
+                    "market": {
+                        "identifier": "wault_swap",
+                        "name": "WaultSwap",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 32.376781682391595,
+                    "bid_ask_spread_percentage": null,
+                    "trade_url": "https://swap.wault.finance/#/swap",
+                    "converted_last": {
+                        "btc": 1.002464,
+                        "usd": 32520,
+                        "eth": 16.562845
+                    },
+                    "token_info_url": null,
+                    "trust_score": null,
+                    "base": "BTCB",
+                    "timestamp": "2021-06-21T12:23:39+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:14:14+00:00",
+                    "is_anomaly": false,
+                    "last": 107.45874634344085,
+                    "last_traded_at": "2021-06-21T12:14:14+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 14.123934,
+                        "usd": 458517,
+                        "eth": 232.248
+                    },
+                    "target_coin_id": "wbnb",
+                    "is_stale": false,
+                    "target": "WBNB",
+                    "market": {
+                        "identifier": "pantherswap",
+                        "name": "PantherSwap",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 14.093488232669674,
+                    "bid_ask_spread_percentage": null,
+                    "trade_url": "https://dex.pantherswap.com/#/swap",
+                    "converted_last": {
+                        "btc": 1.00216,
+                        "usd": 32534,
+                        "eth": 16.479101
+                    },
+                    "token_info_url": null,
+                    "trust_score": null,
+                    "base": "BTCB",
+                    "timestamp": "2021-06-21T12:14:14+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:28:03+00:00",
+                    "is_anomaly": false,
+                    "last": 32704.223452332204,
+                    "last_traded_at": "2021-06-21T12:28:03+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 12.381895,
+                        "usd": 402101,
+                        "eth": 204.528
+                    },
+                    "target_coin_id": "binance-usd",
+                    "is_stale": false,
+                    "target": "BUSD",
+                    "market": {
+                        "identifier": "dodo_bsc",
+                        "name": "Dodo BSC",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 12.228855211305984,
+                    "bid_ask_spread_percentage": null,
+                    "trade_url": null,
+                    "converted_last": {
+                        "btc": 1.012515,
+                        "usd": 32881,
+                        "eth": 16.725067
+                    },
+                    "token_info_url": null,
+                    "trust_score": null,
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-21T12:28:03+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:14:11+00:00",
+                    "is_anomaly": false,
+                    "last": 32644.4830708095,
+                    "last_traded_at": "2021-06-21T12:14:11+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 6.807598,
+                        "usd": 221001,
+                        "eth": 111.941
+                    },
+                    "target_coin_id": "binance-usd",
+                    "is_stale": false,
+                    "target": "BUSD",
+                    "market": {
+                        "identifier": "pantherswap",
+                        "name": "PantherSwap",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 6.779292159013806,
+                    "bid_ask_spread_percentage": null,
+                    "trade_url": "https://dex.pantherswap.com/#/swap",
+                    "converted_last": {
+                        "btc": 1.004175,
+                        "usd": 32599,
+                        "eth": 16.512235
+                    },
+                    "token_info_url": null,
+                    "trust_score": null,
+                    "base": "BTCB",
+                    "timestamp": "2021-06-21T12:14:11+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:22:03+00:00",
+                    "is_anomaly": false,
+                    "last": 33984.96254396259,
+                    "last_traded_at": "2021-06-21T08:13:33+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 0.03028421,
+                        "usd": 1000.86,
+                        "eth": 0.49535993
+                    },
+                    "target_coin_id": "tether",
+                    "is_stale": false,
+                    "target": "USDT",
+                    "market": {
+                        "identifier": "dodo_bsc",
+                        "name": "Dodo BSC",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.029424778641626403,
+                    "bid_ask_spread_percentage": null,
+                    "trade_url": null,
+                    "converted_last": {
+                        "btc": 1.029208,
+                        "usd": 34014,
+                        "eth": 16.834789
+                    },
+                    "token_info_url": null,
+                    "trust_score": null,
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-21T08:13:33+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:14:09+00:00",
+                    "is_anomaly": false,
+                    "last": 0.00000429342159210547,
+                    "last_traded_at": "2021-06-21T10:27:52+00:00",
+                    "coin_id": "pantherswap",
+                    "converted_volume": {
+                        "btc": 0.00023776,
+                        "usd": 7.81,
+                        "eth": 0.00392458
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pantherswap",
+                        "name": "PantherSwap",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 56.19121096766316,
+                    "bid_ask_spread_percentage": null,
+                    "trade_url": "https://dex.pantherswap.com/#/swap",
+                    "converted_last": {
+                        "btc": 0.98554359,
+                        "usd": 32382,
+                        "eth": 16.267535
+                    },
+                    "token_info_url": null,
+                    "trust_score": null,
+                    "base": "PANTHER",
+                    "timestamp": "2021-06-21T10:27:52+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:10:20+00:00",
+                    "is_anomaly": true,
+                    "last": 0.009308729999027416,
+                    "last_traded_at": "2021-06-21T12:10:20+00:00",
+                    "coin_id": "wbnb",
+                    "converted_volume": {
+                        "btc": 400.15,
+                        "usd": 12984721,
+                        "eth": 6571
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 40822.2686986709,
+                    "bid_ask_spread_percentage": 0.602712,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+                    "converted_last": {
+                        "btc": 1.053017,
+                        "usd": 34170,
+                        "eth": 17.290882
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+                    "trust_score": "green",
+                    "base": "0XBB4CDB9CBD36B01BD1CBAEBF2DE08D9173BC095C",
+                    "timestamp": "2021-06-21T12:10:20+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:10:50+00:00",
+                    "is_anomaly": true,
+                    "last": 0.0000338878726084838,
+                    "last_traded_at": "2021-06-21T12:10:50+00:00",
+                    "coin_id": "frankenstein-finance",
+                    "converted_volume": {
+                        "btc": 0.07920346,
+                        "usd": 2570.12,
+                        "eth": 1.300547
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": false,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 2259.03188237627,
+                    "bid_ask_spread_percentage": 0.608543,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x129e6d84c6cab9b0c2f37ad1d14a9fe2e59dab09",
+                    "converted_last": {
+                        "btc": 1.034612,
+                        "usd": 33573,
+                        "eth": 16.98867
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x129e6d84c6cab9b0c2f37ad1d14a9fe2e59dab09",
+                    "trust_score": "green",
+                    "base": "0X129E6D84C6CAB9B0C2F37AD1D14A9FE2E59DAB09",
+                    "timestamp": "2021-06-21T12:10:50+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T05:37:36+00:00",
+                    "is_anomaly": true,
+                    "last": 104.797257963646,
+                    "last_traded_at": "2021-06-21T05:37:36+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 43.611129,
+                        "usd": 1491305,
+                        "eth": 707.666
+                    },
+                    "target_coin_id": "wbnb",
+                    "is_stale": false,
+                    "target": "0XBB4CDB9CBD36B01BD1CBAEBF2DE08D9173BC095C",
+                    "market": {
+                        "identifier": "mdex_bsc",
+                        "name": "Mdex BSC",
+                        "has_trading_incentive": true
+                    },
+                    "volume": 0,
+                    "bid_ask_spread_percentage": 0.602735,
+                    "trade_url": "https://bsc.mdex.com/#/swap?inputCurrency=0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c&outputCurrency=0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+                    "converted_last": {
+                        "btc": 0.99913706,
+                        "usd": 34166,
+                        "eth": 16.212726
+                    },
+                    "token_info_url": null,
+                    "trust_score": "yellow",
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-21T05:37:36+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-20T23:55:56+00:00",
+                    "is_anomaly": false,
+                    "last": 109.316787972342,
+                    "last_traded_at": "2021-06-20T23:55:56+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 0.00621293,
+                        "usd": 222.16,
+                        "eth": 0.09868441
+                    },
+                    "target_coin_id": "binancecoin",
+                    "is_stale": true,
+                    "target": "BNB",
+                    "market": {
+                        "identifier": "one_inch_liquidity_protocol_bsc",
+                        "name": "1inch Liquidity Protocol (BSC)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.00596058690318402,
+                    "bid_ask_spread_percentage": 0.629382,
+                    "trade_url": "https://app.1inch.io/#/r/0x050F788d09395724777a67Dd08bE127cF70dd238/0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+                    "converted_last": {
+                        "btc": 1.042336,
+                        "usd": 37272,
+                        "eth": 16.556156
+                    },
+                    "token_info_url": null,
+                    "trust_score": "green",
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-20T23:55:56+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:40:45+00:00",
+                    "is_anomaly": false,
+                    "last": 0.000004191488225618772,
+                    "last_traded_at": "2021-06-20T12:26:30+00:00",
+                    "coin_id": "icarus-finance",
+                    "converted_volume": {
+                        "btc": 0.00015964,
+                        "usd": 5.35,
+                        "eth": 0.00261478
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": true,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 37.2087402352481,
+                    "bid_ask_spread_percentage": 0.73785,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x95111f630ac215eb74599ed42c67e2c2790d69e2",
+                    "converted_last": {
+                        "btc": 1.023577,
+                        "usd": 34283,
+                        "eth": 16.765712
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x0ca2f09eca544b61b91d149dea2580c455c564b2",
+                    "trust_score": "yellow",
+                    "base": "0X95111F630AC215EB74599ED42C67E2C2790D69E2",
+                    "timestamp": "2021-06-20T12:26:30+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-19T14:52:05+00:00",
+                    "is_anomaly": false,
+                    "last": 0.0687851020296431,
+                    "last_traded_at": "2021-06-18T18:54:28+00:00",
+                    "coin_id": "mirrored-google",
+                    "converted_volume": {
+                        "btc": 0.00002696,
+                        "usd": 1.06,
+                        "eth": 0.00043279
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": true,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.00299217592987076,
+                    "bid_ask_spread_percentage": 1.737622,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x62d71b23bf15218c7d2d7e48dbbd9e9c650b173f",
+                    "converted_last": {
+                        "btc": 0.95677317,
+                        "usd": 37602,
+                        "eth": 15.358397
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x59a921db27dd6d4d974745b7ffc5c33932653442",
+                    "trust_score": "yellow",
+                    "base": "0X62D71B23BF15218C7D2D7E48DBBD9E9C650B173F",
+                    "timestamp": "2021-06-18T18:54:28+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-20T08:36:52+00:00",
+                    "is_anomaly": false,
+                    "last": 0.000008515579318747806,
+                    "last_traded_at": "2021-06-20T01:21:42+00:00",
+                    "coin_id": "kebab-token",
+                    "converted_volume": {
+                        "btc": 1.2559e-8,
+                        "usd": 0.00044695,
+                        "eth": 2.04387e-7
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": true,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.00143579164449648,
+                    "bid_ask_spread_percentage": 12.002735,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x7979f6c54eba05e18ded44c4f986f49a5de551c2",
+                    "converted_last": {
+                        "btc": 1.027164,
+                        "usd": 36556,
+                        "eth": 16.716593
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x7979f6c54eba05e18ded44c4f986f49a5de551c2",
+                    "trust_score": "red",
+                    "base": "0X7979F6C54EBA05E18DED44C4F986F49A5DE551C2",
+                    "timestamp": "2021-06-20T01:21:42+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T11:09:43+00:00",
+                    "is_anomaly": false,
+                    "last": 0.00000103995189256682,
+                    "last_traded_at": "2021-06-21T04:25:17+00:00",
+                    "coin_id": "julswap",
+                    "converted_volume": {
+                        "btc": 0.00000765,
+                        "usd": 0.26378,
+                        "eth": 0.00012496
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": true,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 7.14590597296176,
+                    "bid_ask_spread_percentage": 17.216416,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x5a41f637c3f7553dba6ddc2d3ca92641096577ea",
+                    "converted_last": {
+                        "btc": 1.029336,
+                        "usd": 35495,
+                        "eth": 16.814697
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x5a41f637c3f7553dba6ddc2d3ca92641096577ea",
+                    "trust_score": "red",
+                    "base": "0X5A41F637C3F7553DBA6DDC2D3CA92641096577EA",
+                    "timestamp": "2021-06-21T04:25:17+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-20T23:36:23+00:00",
+                    "is_anomaly": false,
+                    "last": 0.00428907141930417,
+                    "last_traded_at": "2021-06-20T00:12:30+00:00",
+                    "coin_id": "binance-peg-litecoin",
+                    "converted_volume": {
+                        "btc": 8e-11,
+                        "usd": 0.00000285,
+                        "eth": 1.309e-9
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": true,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 1.81537549368005e-8,
+                    "bid_ask_spread_percentage": 38.33409,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x4338665cbb7b2485a8855a139b75d5e34ab0db94",
+                    "converted_last": {
+                        "btc": 1.026166,
+                        "usd": 36605,
+                        "eth": 16.814597
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x4338665cbb7b2485a8855a139b75d5e34ab0db94",
+                    "trust_score": "red",
+                    "base": "0X4338665CBB7B2485A8855A139B75D5E34AB0DB94",
+                    "timestamp": "2021-06-20T00:12:30+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-20T09:12:20+00:00",
+                    "is_anomaly": false,
+                    "last": 0.00003374557921253778,
+                    "last_traded_at": "2021-06-19T10:39:33+00:00",
+                    "coin_id": "evolution",
+                    "converted_volume": {
+                        "btc": 0.00000349,
+                        "usd": 0.124748,
+                        "eth": 0.00005583
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": true,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.0999999999999999,
+                    "bid_ask_spread_percentage": 50.598404,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xb0f2939a1c0e43683e5954c9fe142f7df9f8d967",
+                    "converted_last": {
+                        "btc": 1.033833,
+                        "usd": 36967,
+                        "eth": 16.54406
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0xb0f2939a1c0e43683e5954c9fe142f7df9f8d967",
+                    "trust_score": "red",
+                    "base": "0XB0F2939A1C0E43683E5954C9FE142F7DF9F8D967",
+                    "timestamp": "2021-06-19T10:39:33+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-18T08:04:52+00:00",
+                    "is_anomaly": false,
+                    "last": 0.0000142595881656281,
+                    "last_traded_at": "2021-06-17T09:36:41+00:00",
+                    "coin_id": "vfox",
+                    "converted_volume": {
+                        "btc": 0.00000487,
+                        "usd": 0.191577,
+                        "eth": 0.00007839
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": true,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.345268089135061,
+                    "bid_ask_spread_percentage": 108.699121,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x4d61577d8fd2208a0afb814ea089fdeae19ed202",
+                    "converted_last": {
+                        "btc": 0.9893488,
+                        "usd": 38912,
+                        "eth": 15.922045
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x4d61577d8fd2208a0afb814ea089fdeae19ed202",
+                    "trust_score": "red",
+                    "base": "0X4D61577D8FD2208A0AFB814EA089FDEAE19ED202",
+                    "timestamp": "2021-06-17T09:36:41+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-18T08:55:03+00:00",
+                    "is_anomaly": false,
+                    "last": 37681.98058181194,
+                    "last_traded_at": "2021-06-16T01:08:05+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 2.112649,
+                        "usd": 84460,
+                        "eth": 33.458818
+                    },
+                    "target_coin_id": "binance-usd",
+                    "is_stale": true,
+                    "target": "BUSD",
+                    "market": {
+                        "identifier": "pancakeswap_v1",
+                        "name": "PancakeSwap (v1)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 2.2399856708292414,
+                    "bid_ask_spread_percentage": 0.603567,
+                    "trade_url": "https://v1exchange.pancakeswap.finance/#/swap?outputCurrency=0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+                    "converted_last": {
+                        "btc": 0.943153,
+                        "usd": 37705,
+                        "eth": 14.937068
+                    },
+                    "token_info_url": null,
+                    "trust_score": "gray",
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-16T01:08:05+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T08:25:16+00:00",
+                    "is_anomaly": false,
+                    "last": 1.231344614121372e-13,
+                    "last_traded_at": "2021-06-21T02:14:34+00:00",
+                    "coin_id": "moonstar",
+                    "converted_volume": {
+                        "btc": 5e-12,
+                        "usd": 1.63939e-7,
+                        "eth": 7.4e-11
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": true,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 5600.55722010881,
+                    "bid_ask_spread_percentage": -200.515127,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xce5814efff15d53efd8025b9f2006d4d7d640b9b",
+                    "converted_last": {
+                        "btc": 0.00670342,
+                        "usd": 237.72,
+                        "eth": 0.10694514
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0xce5814efff15d53efd8025b9f2006d4d7d640b9b",
+                    "trust_score": null,
+                    "base": "0XCE5814EFFF15D53EFD8025B9F2006D4D7D640B9B",
+                    "timestamp": "2021-06-21T02:14:34+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T06:53:05+00:00",
+                    "is_anomaly": false,
+                    "last": 1.07451819117298e-15,
+                    "last_traded_at": "2021-06-20T08:45:34+00:00",
+                    "coin_id": "charix-token",
+                    "converted_volume": {
+                        "btc": 1.92e-10,
+                        "usd": 0.00000684,
+                        "eth": 3.122e-9
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": true,
+                    "target": "BTCB",
+                    "market": {
+                        "identifier": "pancakeswap",
+                        "name": "PancakeSwap (v2)",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 982595.940795898,
+                    "bid_ask_spread_percentage": -206.18051,
+                    "trade_url": "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x4eabb20064586dea07aaaf84d4ba35037854bd44",
+                    "converted_last": {
+                        "btc": 0.18230311,
+                        "usd": 6475.21,
+                        "eth": 2.957149
+                    },
+                    "token_info_url": "https://pancakeswap.info/tokens/0x4eabb20064586dea07aaaf84d4ba35037854bd44",
+                    "trust_score": null,
+                    "base": "0X4EABB20064586DEA07AAAF84D4BA35037854BD44",
+                    "timestamp": "2021-06-20T08:45:34+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-19T06:11:21+00:00",
+                    "is_anomaly": false,
+                    "last": 39271.93812881111,
+                    "last_traded_at": "2021-06-17T13:04:30+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 0.11577637,
+                        "usd": 4503.11,
+                        "eth": 1.877055
+                    },
+                    "target_coin_id": "tether",
+                    "is_stale": true,
+                    "target": "USDT",
+                    "market": {
+                        "identifier": "dodo_bsc",
+                        "name": "Dodo BSC",
+                        "has_trading_incentive": false
+                    },
+                    "volume": 0.11451999999999973,
+                    "bid_ask_spread_percentage": null,
+                    "trade_url": null,
+                    "converted_last": {
+                        "btc": 1.010971,
+                        "usd": 39322,
+                        "eth": 16.390632
+                    },
+                    "token_info_url": null,
+                    "trust_score": null,
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-17T13:04:30+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T10:36:46+00:00",
+                    "is_anomaly": true,
+                    "last": 0.0000471201222675508,
+                    "last_traded_at": "2021-06-17T17:10:09+00:00",
+                    "coin_id": "binance-peg-cardano",
+                    "converted_volume": {
+                        "btc": 0,
+                        "usd": 0,
+                        "eth": 0
+                    },
+                    "target_coin_id": "binance-bitcoin",
+                    "is_stale": true,
+                    "target": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "market": {
+                        "identifier": "mdex_bsc",
+                        "name": "Mdex BSC",
+                        "has_trading_incentive": true
+                    },
+                    "volume": 0,
+                    "bid_ask_spread_percentage": 486.269142,
+                    "trade_url": "https://bsc.mdex.com/#/swap?inputCurrency=0x3ee2200efb3400fabb9aacf31297cbdd1d435d47&outputCurrency=0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+                    "converted_last": {
+                        "btc": 0.99932737,
+                        "usd": 38501,
+                        "eth": 16.287193
+                    },
+                    "token_info_url": null,
+                    "trust_score": null,
+                    "base": "0X3EE2200EFB3400FABB9AACF31297CBDD1D435D47",
+                    "timestamp": "2021-06-17T17:10:09+00:00"
+                },
+                {
+                    "last_fetch_at": "2021-06-21T12:12:17+00:00",
+                    "is_anomaly": true,
+                    "last": 85792437.5977273,
+                    "last_traded_at": "2021-06-17T10:51:32+00:00",
+                    "coin_id": "binance-bitcoin",
+                    "converted_volume": {
+                        "btc": 0,
+                        "usd": 0,
+                        "eth": 0
+                    },
+                    "is_stale": true,
+                    "target": "0XB2B2D8A30572E9D308060339B6E5A219C467F1A7",
+                    "market": {
+                        "identifier": "mdex_bsc",
+                        "name": "Mdex BSC",
+                        "has_trading_incentive": true
+                    },
+                    "volume": 0,
+                    "bid_ask_spread_percentage": -202.982891,
+                    "trade_url": "https://bsc.mdex.com/#/swap?inputCurrency=0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c&outputCurrency=0xb2b2d8a30572e9d308060339b6e5a219c467f1a7",
+                    "converted_last": {
+                        "btc": 1.003582,
+                        "usd": 39572,
+                        "eth": 16.200216
+                    },
+                    "token_info_url": null,
+                    "trust_score": null,
+                    "base": "0X7130D2A12B9BCBFAE4F2634D864A1EE1CE3EAD9C",
+                    "timestamp": "2021-06-17T10:51:32+00:00"
+                }
+            ],
+            "platforms": {
+                "harmony-shard-0": "0x34224dcf981da7488fdd01c7fdd64e74cd55dcf7",
+                "binance-smart-chain": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c"
+            },
+            "additional_notices": [],
+            "links": {
+                "subreddit_url": null,
+                "blockchain_site": [
+                    "https://bscscan.com/address/0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                "official_forum_url": [
+                    "",
+                    "",
+                    ""
+                ],
+                "telegram_channel_identifier": "",
+                "twitter_screen_name": "",
+                "repos_url": {
+                    "github": [],
+                    "bitbucket": []
+                },
+                "bitcointalk_thread_identifier": null,
+                "announcement_url": [
+                    "",
+                    ""
+                ],
+                "facebook_username": "",
+                "chat_url": [
+                    "",
+                    "",
+                    ""
+                ],
+                "homepage": [
+                    "",
+                    "",
+                    ""
+                ]
+            },
+            "categories": [],
+            "developer_data": {
+                "forks": 0,
+                "total_issues": 0,
+                "pull_request_contributors": 0,
+                "code_additions_deletions_4_weeks": {
+                    "additions": null,
+                    "deletions": null
+                },
+                "subscribers": 0,
+                "commit_count_4_weeks": 0,
+                "pull_requests_merged": 0,
+                "stars": 0,
+                "last_4_weeks_commit_activity_series": [],
+                "closed_issues": 0
+            },
+            "coingecko_price": {
+                "usd_market_cap": 0,
+                "bnb_24h_change": -1.385177083159274,
+                "bnb_24h_vol": 411176.4083002917,
+                "last_updated_at": 1624278695,
+                "usd": 32392,
+                "bnb": 106.958,
+                "bnb_market_cap": 0,
+                "usd_24h_vol": 124524787.35552126,
+                "usd_24h_change": -4.3949431411943145
+            }
+        }
+    }
+    pair:
+      type: object
+      properties:
+        "_index": 
+          type: string
+          example: "catalog_20210721"
+        "_type":
+          type: string
+          example: "_doc"
+        "_id":
+          type: string
+          example: "bsc~contract~0xCA56457F274921bc97319bCe79e04fd7196Ef203"
+        "_version": 
+          type: integer
+          format: int32
+          example: 58,
+        "_seq_no": 
+          type: integer
+          format: int32
+          example: 20062199,
+        "_primary_term": 
+          type: integer
+          format: int32
+          example: 12,
+        "found": 
+          type: boolean
+          example: true
+        "_source":
+          type: object
+          example: {
+        "symbol": "NORDX/WBNB",
+        "factory_address": "0xca143ce32fe78f1f7019d7d551a6402fc5350c73",
+        "quote_token_name": "Wrapped BNB",
+        "base_token_supply": 1000000000000000,
+        "factory_addres": "0xca143ce32fe78f1f7019d7d551a6402fc5350c73",
+        "base_token_decimals": 9,
+        "price": 0,
+        "base_token_price": 2.748643e-14,
+        "quote_token_decimals": 18,
+        "quote_token_supply": 7181957,
+        "create_date": 1633367117863,
+        "base_token_name": "NordX",
+        "total_volume_locked": 2947400739.5405884,
+        "base_token_address": "0x5471188022325587F281096d202704785a4B041d",
+        "owner": "pancake2",
+        "identifier": "bsc~contract~0xCA56457F274921bc97319bCe79e04fd7196Ef203",
+        "address": "0xCA56457F274921bc97319bCe79e04fd7196Ef203",
+        "owner_name": "pancake2",
+        "total_supply": 589.9152481294278,
+        "kind": "contract",
+        "quote_token_balance": 0.021170243929076064,
+        "volumes": {
+            "week": 1654947774.5308802,
+            "hour": 1654929482.6871283,
+            "month": 1654947774.5308802,
+            "day": 1654947774.5308802
+        },
+        "readable_create_date": "2021-10-04T17:05:17.863Z",
+        "base_token_symbol": "NORDX",
+        "update_date": 1633449513000,
+        "quote_token_address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "quote_token_symbol": "WBNB",
+        "decimals": 18,
+        "base_token_balance": 1633205506125.532,
+        "name": "Pool NordX-Wrapped BNB",
+        "quote_token_price": 36381592419122.47,
+        "category": "pool",
+        "readable_update_date": "2021-10-05T15:58:33.000Z"
+     }
+
     
     
 
