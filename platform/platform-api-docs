@@ -13609,7 +13609,7 @@ components:
           type: array
           items:
             type: object
-          example: [
+            example: [
            {
            "baseFeePerGas": 15,
            "burntFees": 12055890,
